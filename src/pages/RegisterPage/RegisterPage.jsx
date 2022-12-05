@@ -8,20 +8,33 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-
     const navigate = useNavigate();
     const [user, setUser] = useState({})
-    const [errUserCreate, setError] = useState(true)
+    const [matchPass, setMatchPass] = useState(false)
+    const [errUserCreate, setError] = useState(false)
 
     const createNewUSer = (event) => {
         event.preventDefault()
-        UserApi.createUser(user)
-            .then(() => navigate('/'))
-            .catch(setError(true))
+        if (matchPass && user.email) {
+            console.log(user)
+            UserApi.createUser(user)
+                .then(() => navigate('/'))
+                .catch(err => setError(true))
+        } else {
+            setError(true)
+        }
     }
     const updateNewUser = (event) => {
         const { name, value } = event.target
         setUser({ ...user, [name]: value });
+        console.log(user)
+    }
+    const testmatchPass = (event) => {
+        const { value } = event.target
+        if (value === user?.password) { setMatchPass(true) }
+        else { setMatchPass(false) }
+        console.log(value)
+        console.log(user?.password)
     }
 
 
@@ -33,6 +46,7 @@ const Register = () => {
                 <h1>Register</h1>
                 <form onSubmit={createNewUSer}>
                     <input className='RegisterInput'
+                        onChange={updateNewUser}
                         type='email'
                         name='email'
                         placeholder='Email'>
@@ -43,13 +57,14 @@ const Register = () => {
                         name='password'
                         placeholder='************'>
                     </input>
-                    {/* <input className='RegisterInput'
-                        onChange={updateNewUser}
+                    <input className='RegisterInput'
+                        onChange={testmatchPass}
                         type='password'
                         name='pass2'
                         placeholder='************'>
-                    </input> */}
+                    </input>
                     <button type="submit" id="registerBoton">Create User</button>
+                    {errUserCreate && <p>Password not match </p>}
                 </form>
             </div>
             <img className="elipse-blue-down" src={elipseBlueDown} alt="" />
