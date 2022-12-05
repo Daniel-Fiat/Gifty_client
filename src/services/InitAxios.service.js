@@ -3,7 +3,7 @@ import axios from 'axios';
 class InitAxios {
     constructor(path) {
         this.axios = axios.create({
-            baseUrl: `http://localhost:5005/api/${path}`
+            baseURL: `http://localhost:5005/${path}`
         });
     }
 }
