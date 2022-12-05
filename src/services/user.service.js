@@ -1,11 +1,12 @@
 import InitAxios from "./InitAxios.service";
 
+
 class UserAPI extends InitAxios {
     constructor() {
         super('user');
     }
-    createUser(username, email, password) {
-        return axios.post(`/user/new`, body)
+    createUser(body) {
+        return this.axios.post(`/user/new`, body)
     }
 }
 
