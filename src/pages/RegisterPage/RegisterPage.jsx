@@ -3,8 +3,27 @@ import elipseBlueUp from '../../assets/ElipseAzulArriba.png';
 import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
+import UserApi from '../../services/user.service'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 const Register = () => {
+
+    const navigate = useNavigate();
+    const [user, setUser] = useState({})
+    const createNewUSer = (event) => {
+        event.preventDefault()
+        UserApi.createUser(user).then(navigate('/'))
+    }
+    const updateNewUser = (event) => {
+        const { name, value } = event.target
+        setUser({ ...user, [name]: value });
+    }
+
 
     return (
         <div className='register-form-container'>
@@ -12,10 +31,25 @@ const Register = () => {
             <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
             <div id="register-form">
                 <h1>Register</h1>
-                <form action="" method="post">
-                    <input className='RegisterInput' type="text"></input>
-                    <input className='RegisterInput' type="password"></input>
-                    <input className='RegisterInput' type="password"></input>
+                <form onSubmit={createNewUSer}>
+                    <input className='RegisterInput'
+                        onChange={updateNewUser}
+                        type='email'
+                        name='email'
+                        placeholder='Email'>
+                    </input>
+                    <input className='RegisterInput'
+                        onChange={updateNewUser}
+                        type='password'
+                        name='pass1'
+                        placeholder='************'>
+                    </input>
+                    <input className='RegisterInput'
+                        onChange={updateNewUser}
+                        type='password'
+                        name='pass2'
+                        placeholder='************'>
+                    </input>
                     <button type="submit">Create User</button>
                 </form>
             </div>
