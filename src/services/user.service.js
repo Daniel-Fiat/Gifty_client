@@ -1,12 +1,12 @@
-import InitAxios from "./InitAxios.service";
+import axios from 'axios';
 
-
-class UserAPI extends InitAxios {
+class UserAPI {
     constructor() {
-        super('user');
+        this.axios = axios;
     }
     createUser(body) {
-        return this.axios.post(`/user/new`, body)
+        console.log(body)
+        return this.axios.post(`http://localhost:5005/user/new`, body).then(() => { })
     }
 }
 

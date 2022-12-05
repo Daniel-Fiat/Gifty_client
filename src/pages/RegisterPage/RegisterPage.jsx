@@ -7,17 +7,13 @@ import UserApi from '../../services/user.service'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
 const Register = () => {
 
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const createNewUSer = (event) => {
         event.preventDefault()
-        UserApi.createUser(user).then(navigate('/'))
+        UserApi.createUser(user).then(() => navigate('/'))
     }
     const updateNewUser = (event) => {
         const { name, value } = event.target
@@ -41,15 +37,15 @@ const Register = () => {
                     <input className='RegisterInput'
                         onChange={updateNewUser}
                         type='password'
-                        name='pass1'
+                        name='password'
                         placeholder='************'>
                     </input>
-                    <input className='RegisterInput'
+                    {/* <input className='RegisterInput'
                         onChange={updateNewUser}
                         type='password'
                         name='pass2'
                         placeholder='************'>
-                    </input>
+                    </input> */}
                     <button type="submit">Create User</button>
                 </form>
             </div>
