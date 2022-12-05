@@ -9,6 +9,10 @@ class UserAPI extends InitAxios {
             .then((response) => response.data)
             .catch({ error: "error" });
     }
+    login(body) {
+        return this.axios.post('/login', body)
+            .then((response) => response.data)
+            .catch((response) => response.data);
+    }
 }
-
 export default new UserAPI();
