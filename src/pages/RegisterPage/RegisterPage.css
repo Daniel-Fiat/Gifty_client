@@ -22,8 +22,17 @@
   padding: 7px;
   font-size: .8rem;
 }
-.registerButton{
-background-color: red;
+
+#registerBoton {
+  border: 1px solid;
+  border-radius: 15px;
+  border-color: var(--color-red);
+  background-color: var(--color-red);
+  color: white;
+  width: 90%;
+  margin: .5rem;
+  padding: 5px;
+  font-size: 1rem;
 }
 
 .elipse-blue-up {
