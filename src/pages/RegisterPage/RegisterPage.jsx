@@ -11,9 +11,13 @@ const Register = () => {
 
     const navigate = useNavigate();
     const [user, setUser] = useState({})
+    const [errUserCreate, setError] = useState(true)
+
     const createNewUSer = (event) => {
         event.preventDefault()
-        UserApi.createUser(user).then(() => navigate('/'))
+        UserApi.createUser(user)
+            .then(() => navigate('/'))
+            .catch(setError(true))
     }
     const updateNewUser = (event) => {
         const { name, value } = event.target
@@ -29,7 +33,6 @@ const Register = () => {
                 <h1>Register</h1>
                 <form onSubmit={createNewUSer}>
                     <input className='RegisterInput'
-                        onChange={updateNewUser}
                         type='email'
                         name='email'
                         placeholder='Email'>
@@ -46,7 +49,7 @@ const Register = () => {
                         name='pass2'
                         placeholder='************'>
                     </input> */}
-                    <button type="submit">Create User</button>
+                    <button type="submit" id="registerBoton">Create User</button>
                 </form>
             </div>
             <img className="elipse-blue-down" src={elipseBlueDown} alt="" />
