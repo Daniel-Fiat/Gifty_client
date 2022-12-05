@@ -18,7 +18,7 @@ function App() {
         <Route path='/search' element={<Search />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/menu' element={<Menu />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/register' element={<Register />} />//Dani Fiat
       </Routes>
     </div>
   );
