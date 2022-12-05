@@ -64,7 +64,7 @@ const Register = () => {
                         placeholder='************'>
                     </input>
                     <button type="submit" id="registerBoton">Create User</button>
-                    {errUserCreate && <p>Password not match </p>}
+                    {errUserCreate && <p id="msgred">Password not match </p>}
                 </form>
             </div>
             <img className="elipse-blue-down" src={elipseBlueDown} alt="" />

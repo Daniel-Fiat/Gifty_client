@@ -13,6 +13,10 @@
   border-radius: 10px;
 }
 
+#msgred {
+  color: red;
+}
+
 #register-form form {
   display: flex;
   flex-direction: column;
