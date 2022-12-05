@@ -1,3 +1,10 @@
+:root {
+  --color-red: #DC0027;
+  --color-amm: #FEDD02;
+  --color-blue: #05059F;
+  --color-celeste: #DFEFFB;
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +39,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
