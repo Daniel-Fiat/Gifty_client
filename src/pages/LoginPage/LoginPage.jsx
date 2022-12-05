@@ -28,6 +28,7 @@ const Login = () => {
             <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
             <div id="Login-form">
                 <h1>Welcome</h1>
+                <span>Login</span>
                 <form onSubmit={loginUser}>
                     <input className='LoginInput'
                         onChange={updateUser}

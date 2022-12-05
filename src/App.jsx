@@ -13,7 +13,6 @@ import Login from './pages/LoginPage/LoginPage';
 function App() {
   return (
     <div>
-      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/search' element={<Search />} />
@@ -22,6 +21,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
+      <NavBar />
     </div>
   );
 }
