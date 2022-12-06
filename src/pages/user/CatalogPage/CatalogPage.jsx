@@ -1,13 +1,15 @@
 import './CatalogPage.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProductAPI from '../../../services/product.service'
 import { Link } from 'react-router-dom';
-const Search = () => {
+import { AuthContext } from '../../../context/auth.context';
 
+const Search = () => {
+    const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        ProductAPI.getCatalog('638e22c862962979876935a5').then(products => {
+        ProductAPI.getCatalog(user._id).then(products => {
             setProducts(products)
         })
     }, [])
