@@ -23,7 +23,6 @@ const Login = () => {
         event.preventDefault()
         UserApi.login(user)
             .then((res) => {
-                console.log(res.token);
                 storeSetToken(res.token);
                 authentication();
                 navigate('/')

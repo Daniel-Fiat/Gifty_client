@@ -8,11 +8,12 @@ const Search = () => {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        console.log(user);
-        ProductAPI.getWishList(user._id).then(products => {
-            setProducts(products)
-        })
-    }, [])
+        if (user) {
+            ProductAPI.getWishList(user._id).then(products => {
+                setProducts(products)
+            })
+        }
+    }, [user])
 
     return (
         <>

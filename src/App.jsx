@@ -17,6 +17,7 @@ import { useContext } from 'react';
 // windows.location?
 function App() {
   const { user } = useContext(AuthContext);
+  
   return (
     <div>
       <Routes>

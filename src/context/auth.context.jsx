@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import userApi from '../services/user.service';
+import UserAPI from '../services/user.service';
 import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
@@ -22,7 +22,7 @@ export const AuthProvider = (props) => {
     const token = localStorage.getItem(LOCAL_STORAGE_AUTH);
 
     if (token) {
-      userApi
+      UserAPI
         .me(token)
         .then((user) => {
           setUser(user);
@@ -45,10 +45,9 @@ export const AuthProvider = (props) => {
     authentication();
   }, [])
 
-  return(
+  return (
     <AuthContext.Provider
-      value={{ authentication, storeSetToken, logOut, user }}
-    >
+      value={{ authentication, storeSetToken, logOut, user }}>
       {props.children}
     </AuthContext.Provider>
   )
