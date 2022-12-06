@@ -4,13 +4,16 @@ import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
 import UserApi from '../../services/user.service'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
 
 const Login = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const [errUser, setError] = useState(false)
+    const { storeSetToken, authentication } = useContext(AuthContext);
+
     const updateUser = (event) => {
         const { name, value } = event.target
         setUser({ ...user, [name]: value });
@@ -19,8 +22,13 @@ const Login = () => {
     const loginUser = (event) => {
         event.preventDefault()
         UserApi.login(user)
-            .then((user) => { if (user) navigate('/') })
-            .catch(setError(true))
+            .then((res) => {
+                console.log(res.token);
+                storeSetToken(res.token);
+                authentication();
+                navigate('/')
+            })
+            .catch(err => setError(true))
     }
     return (
         <div className='Login-form-container'>
