@@ -17,9 +17,8 @@ const Register = () => {
 
     const updateNewProduct = (event) => {
         event.preventDefault()
-        ProductApi.updateProduct(UpdateProduct, Product._id).then(
-            navigate('/user/catalog')
-        )
+        ProductApi.updateProduct(UpdateProduct, Product._id)
+            .then(navigate('/user/catalog'))
     }
     const updateNewProductState = (event) => {
         const { name, value } = event.target
@@ -27,6 +26,12 @@ const Register = () => {
         setUpdateProduct({ ...UpdateProduct, [name]: value });
         console.log(UpdateProduct)
         console.log(Product)
+    }
+    const deleteProduct = (event) => {
+        event.preventDefault()
+        ProductApi.deleteOneProduct(Product._id)
+            .then(navigate('/user/catalog'))
+
     }
 
 
@@ -71,8 +76,10 @@ const Register = () => {
                         placeholder='sellerUser'
                         value={Product.sellerUser}>
                     </input>
-
                     <button type="submit" id="registerBoton">Update Product</button>
+                </form>
+                <form onSubmit={deleteProduct}>
+                    <button type="submit" id="registerBoton">Delete Product</button>
                 </form>
             </div>
         </div>
