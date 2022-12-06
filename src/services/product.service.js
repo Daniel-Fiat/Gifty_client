@@ -16,6 +16,11 @@ class ProductAPI extends InitAxios {
             .then(response => response.data)
             .catch({ error: "error" });
     }
+    getWishList(id) {
+        return this.axios.get(`/wishList/${id}`)
+            .then(response => response.data)
+            .catch({ error: "error" });
+    }
 
     createProduct(body) {
         return this.axios.put('/new', body)

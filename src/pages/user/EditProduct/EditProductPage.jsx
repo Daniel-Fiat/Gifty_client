@@ -31,7 +31,6 @@ const Register = () => {
         event.preventDefault()
         ProductApi.deleteOneProduct(Product._id)
             .then(navigate('/user/catalog'))
-
     }
 
 
