@@ -8,6 +8,7 @@ const Menu = () => {
             <div>
                 <div className="menu-link"><Link to='/'>My data</Link></div>
                 <div className="menu-link"><Link to='/'>My presents</Link></div>
+                <div className="menu-link"><Link to='/user/catalog'>Catalog</Link></div>
                 <div className="menu-link"><Link to='/'>Configuration</Link></div>
                 <div className="menu-link"><Link to='/'>Help</Link></div>
                 <div className="menu-link"><Link to='/'>Logout</Link></div>
