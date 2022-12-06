@@ -1,13 +1,15 @@
 import './WishListPage.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import ProductAPI from '../../../services/product.service'
 //import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/auth.context';
 const Search = () => {
-
+    const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        ProductAPI.getWishList('638e227162962979876935a2').then(products => {
+        console.log(user);
+        ProductAPI.getWishList(user._id).then(products => {
             setProducts(products)
         })
     }, [])
