@@ -40,6 +40,7 @@ class ProductAPI extends InitAxios {
             .then(response => response.data)
             .catch({ error: "error" });
     }
+
     deleteOneProduct(productid) {
         return this.axios.delete(`/delete/${productid}`)
             .then(response => response.data)

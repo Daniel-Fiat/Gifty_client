@@ -1,7 +1,7 @@
 import './WishListPage.css'
 import { useState, useEffect } from 'react';
 import ProductAPI from '../../../services/product.service'
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 const Search = () => {
 
     const [products, setProducts] = useState([])
