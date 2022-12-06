@@ -9,9 +9,10 @@ import Menu from './pages/MenuPage/MenuPage';
 import Register from './pages/RegisterPage/RegisterPage';
 import Login from './pages/LoginPage/LoginPage';
 import Catalog from './pages/user/CatalogPage/CatalogPage';
-import CreateProduct from './pages/user/CreateProduct/CreateProduct';
+import CreateProduct from './pages/user/CreateProduct/CreateProductPage';
+import EditProduct from './pages/user/EditProduct/EditProductPage';
 
-
+// windows.location?
 function App() {
   return (
     <div>
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/user/catalog' element={<Catalog />} />
         <Route path='/user/CreateProduct' element={<CreateProduct />} />
+        <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
       </Routes>
       <NavBar />
     </div>

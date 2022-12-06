@@ -3,7 +3,7 @@ import ProductApi from '../../../services/product.service'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const CreateProduct = () => {
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
 
@@ -66,4 +66,4 @@ const Register = () => {
 
 }
 
-export default Register;
+export default CreateProduct;

@@ -23,7 +23,13 @@ const Search = () => {
             </input>
             <div className="menu-link"><Link to='/user/CreateProduct'>New Product</Link></div>
             {
-                products.map(product => <h1>{product.name}</h1>)
+                products.map(product => {
+                    return (
+                        <>
+                            <h1>{product.name}</h1> <div><Link to={`/user/UpdateProduct/${product._id}`}>Edit</Link></div>
+                        </>
+                    )
+                })
             }
 
         </>
