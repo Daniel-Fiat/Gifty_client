@@ -1,3 +1,26 @@
-img {
-    width: 500px;
+#IMGproduct {
+    width: 90%;
+    border-radius: 15px;
+    margin: 1rem;
+}
+
+#ProductCard {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#GiftButtom {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: white;
+    width: 70%;
+    margin: .5rem;
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-justify: center;
+    text-decoration: none;
 }
