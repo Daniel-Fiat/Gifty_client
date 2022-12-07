@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import homelogo from '../../assets/Boton1.png';
 import lupa from '../../assets/lupa.png';
 import perfil from '../../assets/perfil.png';
-import notificacion from '../../assets/notificacion.png';
+import burger from '../../assets/burger.png';
 import regalos from '../../assets/regalos.png';
 import './Navbar.css';
 import { useEffect, useState } from 'react';
@@ -33,7 +33,7 @@ function NavBar() {
             </div>
             <div className="d-flex flex-column align-items-center">
                 <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/menu'>
-                    <img src={perfil} alt="" />
+                    <img src={burger} alt="" />
                 </Link>
                 <span>Menu</span>
             </div>

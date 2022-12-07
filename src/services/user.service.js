@@ -21,5 +21,16 @@ class UserAPI extends InitAxios {
             .then((response) => response.data)
             .catch((response) => response.data);
     }
+    addWishList(userId, idProduct) {
+        return this.axios.put(`/wishList/add/${userId}`, { idProduct })
+            .then((response) => response.data)
+            .catch({ error: "error" });
+    }
+    removeWishList(userId, idProduct) {
+        return this.axios.put(`/wishList/remove/${userId}`, { idProduct })
+            .then((response) => response.data)
+            .catch({ error: "error" });
+    }
+
 }
 export default new UserAPI();
