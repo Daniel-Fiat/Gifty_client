@@ -13,6 +13,7 @@ import Catalog from './pages/user/CatalogPage/CatalogPage';
 import WishList from './pages/user/WishListPage/WishListPage';
 import CreateProduct from './pages/user/CreateProduct/CreateProductPage';
 import EditProduct from './pages/user/EditProduct/EditProductPage';
+import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
 // windows.location?
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/product/:id' element={<ProductDetail />} />
         <Route path='/profile' element={user ? <Profile /> : <RegisterLoginPage />} />
         <Route path='/menu' element={<Menu />} />
         <Route path='/register' element={<Register />} />
