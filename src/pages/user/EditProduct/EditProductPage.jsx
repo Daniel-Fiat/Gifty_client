@@ -8,6 +8,8 @@ const Register = () => {
     const [Product, setProduct] = useState({})
     const [UpdateProduct, setUpdateProduct] = useState({})
     const { id } = useParams()
+    localStorage.setItem("Navbar", true);
+
 
     useEffect(() => {
         console.log(id)

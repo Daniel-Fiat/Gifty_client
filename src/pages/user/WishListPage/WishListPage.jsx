@@ -7,6 +7,7 @@ import { AuthContext } from '../../../context/auth.context';
 const Search = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([])
+    localStorage.setItem("Navbar", true);
 
     useEffect(() => {
         if (user) {

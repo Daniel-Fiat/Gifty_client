@@ -6,11 +6,13 @@ import perfil from '../../assets/perfil.png';
 import notificacion from '../../assets/notificacion.png';
 import regalos from '../../assets/regalos.png';
 import './Navbar.css';
+import { useEffect, useState } from 'react';
 
 function NavBar() {
-
+    const layout = localStorage.getItem("Navbar")
     return (
-        <Navbar id="Navbar" fixed="bottom" className="d-flex justify-content-evenly" >
+        <Navbar id="Navbar" fixed="bottom"
+            className={layout ? "d-flex justify-content-evenly" : "nondisplay"} >
             <div className="d-flex flex-column align-items-center">
                 <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/'>
                     <img src={homelogo} alt="" />

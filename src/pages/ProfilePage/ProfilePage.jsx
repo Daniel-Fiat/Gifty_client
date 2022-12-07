@@ -1,5 +1,5 @@
 const profile = () => {
-
+    localStorage.setItem("Navbar", true);
     return (
         <>
             <h1>profile</h1>

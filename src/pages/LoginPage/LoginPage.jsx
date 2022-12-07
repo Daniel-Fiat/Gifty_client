@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 
 const Login = () => {
+    localStorage.removeItem("Navbar");
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const [errUser, setError] = useState(false)

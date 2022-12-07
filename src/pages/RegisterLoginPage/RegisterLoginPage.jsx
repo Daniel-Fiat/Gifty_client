@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    localStorage.removeItem("Navbar");
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const [matchPass, setMatchPass] = useState(false)
@@ -44,7 +45,7 @@ const Register = () => {
             <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
             <div id="register-form">
                 <h1>Bienvenido</h1>
-                <p>necesitas crear una cuenta para poder comprar tus regalos y nose que mas</p>
+                <p>Para poder hacer tu regalo necesitas estar registrado</p>
                 <Link to='/login'><button id="registerBoton">Login</button></Link>
                 <Link to='/register'><button id="registerBoton">Register</button></Link>
             </div>

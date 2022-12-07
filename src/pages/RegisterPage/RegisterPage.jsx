@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    localStorage.removeItem("Navbar");
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const [matchPass, setMatchPass] = useState(false)

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const CreateProduct = () => {
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
-
+    localStorage.setItem("Navbar", true);
     const createNewProduct = (event) => {
         event.preventDefault()
         ProductApi.createProduct(Product).then(

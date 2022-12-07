@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/auth.context';
 import { useContext } from "react";
 
 const Menu = () => {
+    localStorage.setItem("Navbar", true);
     const { logOut, user } = useContext(AuthContext);
     return (
         <>

@@ -19,3 +19,7 @@
 #Link :active {
     background-color: #DC0027;
 }
+
+.nondisplay {
+    display: none;
+}
