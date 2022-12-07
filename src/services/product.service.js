@@ -46,6 +46,18 @@ class ProductAPI extends InitAxios {
             .then(response => response.data)
             .catch({ error: "error" });
     }
+
+    getProductsByCategory(category) {
+        return this.axios.get(`/category/${category}`)
+            .then(response => response.data)
+            .catch({ error: "error" });
+    }
+
+    getProductsBychance(chance) {
+        return this.axios.get(`/chance/${chance}`)
+            .then(response => response.data)
+            .catch({ error: "error" });
+    }
 }
 
 export default new ProductAPI();
