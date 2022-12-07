@@ -1,15 +1,17 @@
 import './EditProductPage.css'
 import ProductApi from '../../../services/product.service'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../context/auth.context';
 
 const Register = () => {
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
-    const [UpdateProduct, setUpdateProduct] = useState({})
+    const [UpdateProduct, setUpdateProduct] = useState(Product)
+
     const { id } = useParams()
     localStorage.setItem("Navbar", true);
-
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         console.log(id)
@@ -19,6 +21,7 @@ const Register = () => {
 
     const updateNewProduct = (event) => {
         event.preventDefault()
+        UpdateProduct.sellerUser = user._id
         ProductApi.updateProduct(UpdateProduct, Product._id)
             .then(navigate('/user/catalog'))
     }
@@ -70,13 +73,24 @@ const Register = () => {
                         placeholder='price'
                         value={Product.price}>
                     </input>
-                    <input className='NewproductInput'
-                        onChange={updateNewProductState}
-                        type='text'
-                        name='sellerUser'
-                        placeholder='sellerUser'
-                        value={Product.sellerUser}>
-                    </input>
+                    <label htmlFor="">category</label>
+                    <select onChange={updateNewProduct} name="category" id="categorySelect">
+                        <option value=""></option>
+                        <option value="breakfast">breakfast</option>
+                        <option value="cakes">cakes</option>
+                        <option value="tapas">tapas</option>
+                        <option value="flowers">flowers</option>
+                        <option value="drinks">drinks</option>
+                        <option value="objects">objects</option>
+                    </select> <br />
+                    <label htmlFor="">chance</label>
+                    <select onChange={updateNewProduct} name="chance" id="categorySelect">
+                        <option value=""></option>
+                        <option value="birthday">birthday</option>
+                        <option value="anniversary">anniversary</option>
+                        <option value="Valentine">Valentine</option>
+                        <option value="graduation">graduation</option>
+                    </select>
                     <button type="submit" id="registerBoton">Update Product</button>
                 </form>
                 <form onSubmit={deleteProduct}>
