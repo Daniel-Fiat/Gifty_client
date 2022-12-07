@@ -16,25 +16,29 @@ import EditProduct from './pages/user/EditProduct/EditProductPage';
 import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
+import { Container, Row } from 'react-bootstrap';
 // windows.location?
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
     <div>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/search' element={<Search />} />
-        <Route path='/product/:id' element={<ProductDetail />} />
-        <Route path='/profile' element={user ? <Profile /> : <RegisterLoginPage />} />
-        <Route path='/menu' element={<Menu />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/user/catalog' element={user ? <Catalog /> : <RegisterLoginPage />} />
-        <Route path='/user/wishList' element={user ? <WishList /> : <RegisterLoginPage />} />
-        <Route path='/user/CreateProduct' element={<CreateProduct />} />
-        <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/profile' element={user ? <Profile /> : <RegisterLoginPage />} />
+          <Route path='/menu' element={<Menu />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/user/catalog' element={user ? <Catalog /> : <RegisterLoginPage />} />
+          <Route path='/user/wishList' element={user ? <WishList /> : <RegisterLoginPage />} />
+          <Route path='/user/CreateProduct' element={<CreateProduct />} />
+          <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
+        </Routes>
+      </Container>
+      <div className='margin-bottom-app'></div>
       <NavBar />
     </div>
   );

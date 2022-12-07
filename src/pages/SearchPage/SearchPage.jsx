@@ -1,6 +1,25 @@
 import './SearchPage.css'
 import { useState, useEffect } from 'react';
+import { Row } from 'react-bootstrap';
+import CardSearchList from '../../components/CardSearchList/CardSearchList';
 import ProductAPI from '../../services/product.service'
+
+import Desayunos from '../../assets/CategoryImages/Desayunos.png';
+import Pasteleria from '../../assets/CategoryImages/Pasteleria.png';
+import Picadas from '../../assets/CategoryImages/Picadas.png';
+import Bebidas from '../../assets/CategoryImages/Bebidas.png';
+import Flores from '../../assets/CategoryImages/Flores.png';
+import Objetos from '../../assets/CategoryImages/Objetos.png';
+
+import Cumpleanos from '../../assets/OcasionImages/Cumpleanos.png';
+import Aniversarios from '../../assets/OcasionImages/Aniversarios.png';
+import SanValentin from '../../assets/OcasionImages/SanValentin.png';
+import Bodas from '../../assets/OcasionImages/Bodas.png';
+import BabyShower from '../../assets/OcasionImages/BabyShower.png';
+import Graduaciones from '../../assets/OcasionImages/Graduaciones.png';
+import CardProductSearchList from '../../components/CardProductSearchList/CardProductSearchList';
+
+
 const Search = () => {
     localStorage.setItem("Navbar", true);
     const [products, setProducts] = useState([]);
@@ -31,13 +50,40 @@ const Search = () => {
                 name='SearchInput'
                 placeholder='Search'>
             </input>
+
             {
                 filter
                     ?
-                    filter.map(filter => <h1>{filter.name}</h1>)
+                    <Row>{
+                        filter.map(filter => <CardProductSearchList product={filter}></CardProductSearchList>)
+                    }
+                    </Row>
                     :
-                    <div><h1>Hola</h1></div>
+                    <div>
+                        <h2 className='title-search-category'>Search by Category</h2>
+                        <Row>
+                            <CardSearchList img={Desayunos} title="Breakfast"></CardSearchList>
+                            <CardSearchList img={Pasteleria} title="Cakes"></CardSearchList>
+                            <CardSearchList img={Picadas} title="Tapas"></CardSearchList>
+                            <CardSearchList img={Bebidas} title="Drinks"></CardSearchList>
+                            <CardSearchList img={Flores} title="Flowers"></CardSearchList>
+                            <CardSearchList img={Objetos} title="Objects"></CardSearchList>
+                        </Row>
+
+                        <h2 className='title-search-category'>Search by Chance</h2>
+                        <Row>
+                            <CardSearchList img={Cumpleanos} title="Birthday"></CardSearchList>
+                            <CardSearchList img={Aniversarios} title="Anniversary"></CardSearchList>
+                            <CardSearchList img={SanValentin} title="Valentine"></CardSearchList>
+                            <CardSearchList img={Bodas} title="Weddings"></CardSearchList>
+                            <CardSearchList img={BabyShower} title="Baby Shower"></CardSearchList>
+                            <CardSearchList img={Graduaciones} title="Graduation"></CardSearchList>
+                        </Row>
+
+                    </div>
             }
+
+
 
         </>
     );
