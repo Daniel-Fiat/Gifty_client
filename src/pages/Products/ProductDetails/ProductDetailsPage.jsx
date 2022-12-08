@@ -70,8 +70,10 @@ const ProductDetail = () => {
                     :
                     (<p>Loading...</p>)
             }
-
-        </>
+            <Link to={`/gifty/${product._id}`}>
+                Regalar
+            </Link>
+        </div>
     );
 
 }
