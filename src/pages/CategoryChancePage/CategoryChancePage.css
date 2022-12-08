@@ -1,0 +1,39 @@
+.title-page {
+    color: var(--color-red);
+}
+
+#category-chance-links {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+    color: var(--color-blue);
+}
+
+#category-chance-links div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filter-category-chance-img,
+#order-category-chance-img {
+    width: 18px;
+    margin-right: 5px;
+}
+
+#filter-category-chance-link,
+#order-category-chance-link {
+    text-decoration: none;
+    color: var(--color-blue);
+}
+
+#header-filter-order {
+    border: 0;
+}
+
+#order label {
+    color: var(--color-blue);
+    font-weight: bold;
+    margin-right: 5px;
+}

@@ -24,3 +24,23 @@
     text-justify: center;
     text-decoration: none;
 }
+
+#figure-imgProduct {
+    position: relative
+}
+
+#figure-imgProduct button {
+    background-color: transparent;
+    border: 0;
+}
+
+#figure-imgProduct figcaption img {
+    width: 35px;
+}
+
+#figure-imgProduct figcaption {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    font-size: 14px;
+}

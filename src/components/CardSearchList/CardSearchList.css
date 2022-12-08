@@ -2,11 +2,11 @@
     width: 100%;
 }
 
-figure {
+.card-search figure {
     position: relative
 }
 
-figcaption {
+.card-search figcaption {
     position: absolute;
     text-align: center;
     left: 0;
