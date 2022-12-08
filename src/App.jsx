@@ -16,7 +16,7 @@ import EditProduct from './pages/user/EditProduct/EditProductPage';
 import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 // windows.location?
 function App() {
   const { user } = useContext(AuthContext);

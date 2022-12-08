@@ -23,7 +23,7 @@ const ProductDetail = () => {
     }, [])
 
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         UserApi.getOne(user?._id).then(userApi => {
             const newvalidate = userApi.wishList.includes(product._id)
             setwishList(newvalidate)
