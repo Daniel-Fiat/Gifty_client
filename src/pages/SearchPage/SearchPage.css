@@ -8,6 +8,12 @@
     font-size: .8rem;
 }
 
+.SearchInput:focus {
+    outline: none;
+    border: 1.5px solid;
+    border-color: var(--color-red);
+}
+
 .title-search-category {
     color: var(--color-blue);
     font-size: 15px;

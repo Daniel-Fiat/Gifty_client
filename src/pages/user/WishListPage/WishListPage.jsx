@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import ProductAPI from '../../../services/product.service'
 //import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
+import { Row } from 'react-bootstrap';
+import CardProductSearchList from '../../../components/CardProductSearchList/CardProductSearchList';
 
 const Search = () => {
     const { user } = useContext(AuthContext);
@@ -19,21 +21,15 @@ const Search = () => {
 
     return (
         <>
-            <h1>Search</h1>
-            <input className='CatalogInput'
-                // onChange={updateUser}
-                type='text'
-                name='SearchInput'
-                placeholder='Search'>
-            </input>
+            <h1>Wish List</h1>
+            <br />
             {
-                products.map(product => {
-                    return (
-                        <>
-                            <h1>{product.name}</h1>
-                        </>
-                    )
-                })
+                <Row>
+                    {
+                        products.map(product => <CardProductSearchList product={product}></CardProductSearchList>)
+                    }
+                </Row>
+
             }
 
         </>

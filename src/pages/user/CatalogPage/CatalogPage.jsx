@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import ProductAPI from '../../../services/product.service'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
+import CardProductSearchList from '../../../components/CardProductSearchList/CardProductSearchList';
 
 const Search = () => {
     const { user } = useContext(AuthContext);
@@ -29,7 +30,11 @@ const Search = () => {
                 products.map(product => {
                     return (
                         <>
-                            <h1>{product.name}</h1> <div><Link to={`/user/UpdateProduct/${product._id}`}>Edit</Link></div>
+                            <CardProductSearchList id="card" product={product}>
+                            </CardProductSearchList>
+                            <Link to={`/user/UpdateProduct/${product._id}`}>
+                                edit
+                            </Link>
                         </>
                     )
                 })

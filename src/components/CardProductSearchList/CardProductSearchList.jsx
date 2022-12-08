@@ -10,7 +10,7 @@ const CardProductSearchList = ({ product }) => {
                     <img src={product.imgUrl} alt="" />
                     <p className="title">{product.name}</p>
                     <p className="price">{product.price}€</p>
-                    <p className="rating">⭐{product.rating}</p>
+                    <p className="rating">{'⭐'.repeat(product.rating)}</p>
                 </div>
             </Link>
         </Col >

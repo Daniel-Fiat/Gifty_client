@@ -36,7 +36,7 @@
 .LoginInput:focus {
     outline: none;
     border: 1.5px solid;
-    border-color: red;
+    border-color: var(--color-red);
 }
 
 #LoginBoton {
