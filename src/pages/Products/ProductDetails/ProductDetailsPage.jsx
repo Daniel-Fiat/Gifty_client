@@ -73,7 +73,7 @@ const ProductDetail = () => {
             <Link to={`/gifty/${product._id}`}>
                 Regalar
             </Link>
-        </div>
+        </>
     );
 
 }
