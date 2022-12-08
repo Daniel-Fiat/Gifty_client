@@ -59,6 +59,14 @@ const GiftyProduct = () => {
                     <button type="submit">remuv</button>
                 </form>)
             }
+            <form onSubmit={addWishList}>
+                <label >Escribe tu dedicatoria</label>
+                <textarea name="dedicatoria" rows="4" cols="40">Write something here</textarea>
+                <label >El ife Fecha y Hora</label>
+                <input type="date" name="date" id="" />
+
+
+            </form>
         </div>
     );
 
