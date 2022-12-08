@@ -14,6 +14,7 @@ import WishList from './pages/user/WishListPage/WishListPage';
 import CreateProduct from './pages/user/CreateProduct/CreateProductPage';
 import EditProduct from './pages/user/EditProduct/EditProductPage';
 import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
+import GiftyProduct from './pages/Products/giftyProductPage/giftyProductPage';
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
 import { Container } from 'react-bootstrap';
@@ -28,6 +29,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
           <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/gifty/:id' element={<GiftyProduct />} />
           <Route path='/profile' element={user ? <Profile /> : <RegisterLoginPage />} />
           <Route path='/menu' element={<Menu />} />
           <Route path='/register' element={<Register />} />

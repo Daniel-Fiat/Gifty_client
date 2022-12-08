@@ -1,13 +1,12 @@
 import { AuthContext } from '../../../context/auth.context';
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
-import './ProductDetails.css'
+import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
 
-//http://localhost:3000/product/638f21e7fc32fef2b3800a95
 
-const ProductDetail = () => {
+const GiftyProduct = () => {
     localStorage.setItem("Navbar", true);
     const [validateWishList, setwishList] = useState()
     const [product, setProduct] = useState({})
@@ -59,15 +58,11 @@ const ProductDetail = () => {
                 (<form onSubmit={removeWishList}>
                     <button type="submit">remuv</button>
                 </form>)
-
             }
-            <Link to={`/gifty/${product._id}`}>
-                Regalar
-            </Link>
         </div>
     );
 
 
 }
 
-export default ProductDetail;
+export default GiftyProduct;
