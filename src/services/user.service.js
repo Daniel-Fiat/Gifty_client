@@ -32,7 +32,7 @@ class UserAPI extends InitAxios {
             .catch({ error: "error" });
     }
     getOne(userId) {
-        return this.axios.get(`/user/${userId}`)
+        return this.axios.get(`/${userId}`)
             .then((response) => response.data)
             .catch({ error: "error" });
     }
