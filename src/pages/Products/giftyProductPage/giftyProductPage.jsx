@@ -4,14 +4,18 @@ import { useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
 import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
+import OrderApi from '../../../services/order.service'
 
 
 const GiftyProduct = () => {
     localStorage.setItem("Navbar", true);
     const [validateWishList, setwishList] = useState()
     const [product, setProduct] = useState({})
+    const [order, setOrder] = useState({})
+    const [adress, setAdress] = useState({})
     const { user } = useContext(AuthContext)
     const { id } = useParams()
+
 
 
     useEffect(() => {
@@ -21,7 +25,16 @@ const GiftyProduct = () => {
             })
     }, [])
 
-
+    const updateOrder = (event) => {
+        const { name, value } = event.target
+        setOrder({ ...order, [name]: value })
+        console.log(product.sellerUser._id)
+    }
+    const updateAdress = (event) => {
+        const { name, value } = event.target
+        setAdress({ ...adress, [name]: value })
+        console.log(adress)
+    }
     useEffect(() => {
         UserApi.getOne(user?._id).then(userApi => {
             const newvalidate = userApi.wishList.includes(product._id)
@@ -43,6 +56,20 @@ const GiftyProduct = () => {
         const newvalidate = false
         setwishList(newvalidate)
     }
+    const CreateProduct = (event) => {
+        event.preventDefault()
+        const body = {
+            "price": product.price,
+            "sellerUser": product.sellerUser._id,
+            "clientUser": user._id,
+            "productID": product._id,
+            "dedication": order.dedication,
+            "deliverDate": order.date,
+            "State": "pendconfir",
+            "deliveryAddress": adress,
+        }
+        OrderApi.newOrder(body)
+    }
     return (
         <div id="ProductCard">
             <img id="IMGproduct" src={product.imgUrl} alt="esto" />
@@ -59,13 +86,22 @@ const GiftyProduct = () => {
                     <button type="submit">remuv</button>
                 </form>)
             }
-            <form onSubmit={addWishList}>
+            <form onSubmit={CreateProduct}>
                 <label >Escribe tu dedicatoria</label>
-                <textarea name="dedicatoria" rows="4" cols="40">Write something here</textarea>
+                <textarea
+                    name="dedication"
+                    rows="4"
+                    cols="40"
+                    onChange={updateOrder}
+                ></textarea>
                 <label >El ife Fecha y Hora</label>
-                <input type="date" name="date" id="" />
-
-
+                <input onChange={updateAdress} type="date" name="date" id="" onChange={updateOrder} />
+                <input onChange={updateAdress} type="text" name="street" id="" />
+                <input onChange={updateAdress} type="text" name="number" id="" />
+                <input onChange={updateAdress} type="text" name="door" id="" />
+                <input onChange={updateAdress} type="text" name="floor" id="" />
+                <input onChange={updateAdress} type="text" name="city" id="" />
+                <button type="submit">CreateProduct</button>
             </form>
         </div>
     );

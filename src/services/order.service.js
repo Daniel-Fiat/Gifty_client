@@ -2,10 +2,10 @@ import InitAxios from "./InitAxios.service";
 
 class OrderAPI extends InitAxios {
     constructor() {
-        super('order');
+        super('orders');
     }
-    newReview(body) {
-        // const { price, sellerUser, clientUser, productID, deliveryAddress } = req.body
+    newOrder(body) {
+        console.log(body)
         return this.axios.post(`/new`, body)
             .then((response) => response.data)
             .catch({ error: "error" });
