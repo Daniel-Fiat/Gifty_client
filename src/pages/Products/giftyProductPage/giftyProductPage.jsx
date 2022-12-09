@@ -1,6 +1,6 @@
 import { AuthContext } from '../../../context/auth.context';
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
 import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
@@ -8,6 +8,7 @@ import OrderApi from '../../../services/order.service'
 
 
 const GiftyProduct = () => {
+    const navigate = useNavigate();
     localStorage.setItem("Navbar", true);
     const [validateWishList, setwishList] = useState()
     const [product, setProduct] = useState({})
@@ -65,6 +66,9 @@ const GiftyProduct = () => {
             "deliveryAddress": adress,
         }
         OrderApi.newOrder(body)
+        navigate('/')
+
+
     }
     return (
         <div id="ProductCard">
