@@ -22,7 +22,6 @@ const Register = () => {
             <img className="elipse-yellow-down" src={elipseYellowDown} alt="" />
         </div>
     );
-
 }
 
 export default Register;
