@@ -38,7 +38,6 @@ const Register = () => {
         console.log(user?.password)
     }
 
-
     return (
         <div className='register-form-container'>
             <img className="elipse-blue-up" src={elipseBlueUp} alt="" />

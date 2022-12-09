@@ -4,7 +4,7 @@ import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
 import UserApi from '../../services/user.service'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 
@@ -30,6 +30,7 @@ const Login = () => {
             })
             .catch(err => setError(true))
     }
+    
     return (
         <div className='Login-form-container'>
             <img className="elipse-blue-up" src={elipseBlueUp} alt="" />

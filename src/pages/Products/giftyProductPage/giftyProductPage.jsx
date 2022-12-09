@@ -16,8 +16,6 @@ const GiftyProduct = () => {
     const { user } = useContext(AuthContext)
     const { id } = useParams()
 
-
-
     useEffect(() => {
         ProductAPI.getOneProduct(id)
             .then(product => {
@@ -41,8 +39,6 @@ const GiftyProduct = () => {
             setwishList(newvalidate)
         })
     }, [user])
-
-
 
     const removeWishList = (event) => {
         event.preventDefault()

@@ -15,8 +15,10 @@ const CategoryChance = () => {
     const typeApi = type.split("-")[0];
     const typeBody = type.split("-")[1];
 
+    const [productState, setProductState] = useState();
     const [filter, setFilter] = useState();
 
+    const [selectedOption, setselectedOption] = useState();
     const [showOrder, setShowOrder] = useState(false);
     const orderClose = () => setShowOrder(false);
 
@@ -27,18 +29,18 @@ const CategoryChance = () => {
     useEffect(() => {
         if (typeApi === "category") {
             ProductAPI.getProductsByCategory(typeBody).then(products => {
-                setFilter(products)
+                setProductState(products)
             })
         } else if (typeApi === "chance") {
             ProductAPI.getProductsBychance(typeBody).then(products => {
-                setFilter(products)
+                setProductState(products)
             })
         }
     }, [])
 
     const filterProducts = (event) => {
         const { value } = event.target;
-        let _products = [...filter];
+        let _products = [...productState];
 
         _products = _products.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
 
@@ -47,7 +49,8 @@ const CategoryChance = () => {
 
     const orderProducts = (event) => {
         const { value } = event.target;
-        let _products = [...filter];
+        let _products = [...productState];
+        setselectedOption(value);
 
         if (value === "top-rated") {
             _products.sort((a, b) => b.rating - a.rating);
@@ -72,7 +75,7 @@ const CategoryChance = () => {
                 placeholder='Search'>
             </input>
             {
-                filter &&
+                productState &&
                 <>
                     <div id="category-chance-links">
                         <div>
@@ -88,7 +91,15 @@ const CategoryChance = () => {
                             </Link>
                         </div>
                     </div>
-                    <Row>{filter.map(filter => <CardProductSearchList key={filter._id} product={filter}></CardProductSearchList>)}</Row>
+                    <Row>
+                        {
+                            filter
+                                ?
+                                filter.map(filter => <CardProductSearchList key={filter._id} product={filter}></CardProductSearchList>)
+                                :
+                                productState.map(product => <CardProductSearchList key={product._id} product={product}></CardProductSearchList>)
+                        }
+                    </Row>
 
                     <Modal show={showOrder} onHide={orderClose}>
                         <Modal.Header id="header-filter-order" closeButton></Modal.Header>
@@ -96,11 +107,11 @@ const CategoryChance = () => {
                             {
                                 <form id="order">
                                     <label>Top rated</label>
-                                    <input type="radio" name="order" onChange={orderProducts} value="top-rated" /><br />
+                                    <input type="radio" name="order" onChange={orderProducts} value="top-rated" checked={selectedOption === "top-rated"} /><br />
                                     <label>Lower to higher price</label>
-                                    <input type="radio" name="order" onChange={orderProducts} value="lower-higher-price" /><br />
+                                    <input type="radio" name="order" onChange={orderProducts} value="lower-higher-price" checked={selectedOption === "lower-higher-price"} /><br />
                                     <label>Higher to lower price</label>
-                                    <input type="radio" name="order" onChange={orderProducts} value="higher-lower-price" /><br />
+                                    <input type="radio" name="order" onChange={orderProducts} value="higher-lower-price" checked={selectedOption === "higher-lower-price"} /><br />
                                 </form>
                             }
                         </Modal.Body>
