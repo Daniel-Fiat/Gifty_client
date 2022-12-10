@@ -12,8 +12,8 @@ import orderIcon from '../../assets/order-icon.png';
 const CategoryChance = () => {
     localStorage.setItem("Navbar", true);
     const { type } = useParams();
-    const typeApi = type.split("-")[0];
-    const typeBody = type.split("-")[1];
+    const categoryChanceTypeApi = type.split("-")[0];
+    const categoryChanceType = type.split("-")[1];
 
     const [productState, setProductState] = useState();
     const [filter, setFilter] = useState();
@@ -27,47 +27,50 @@ const CategoryChance = () => {
     };
 
     useEffect(() => {
-        if (typeApi === "category") {
-            ProductAPI.getProductsByCategory(typeBody).then(products => {
+        ProductAPI
+            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType } : { chance: categoryChanceType }, 12)
+            .then(products => {
                 setProductState(products)
             })
-        } else if (typeApi === "chance") {
-            ProductAPI.getProductsBychance(typeBody).then(products => {
-                setProductState(products)
-            })
-        }
     }, [])
 
     const filterProducts = (event) => {
         const { value } = event.target;
-        let _products = [...productState];
+        let sort;
 
-        _products = _products.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
+        if (selectedOption === "lower-higher-price") { sort = { price: 1 } } else if (selectedOption === "higher-lower-price") { sort = { price: -1 } } else { sort = { rating: -1 } }
 
-        setFilter(_products)
+        ProductAPI
+            .getAllproduct(
+                categoryChanceTypeApi === "category"
+                    ?
+                    { category: categoryChanceType, name: { $regex: value, $options: 'i' } }
+                    :
+                    { chance: categoryChanceType, name: { $regex: value, $options: 'i' } }, 12, {}, sort)
+            .then(products => {
+                setFilter(products)
+            })
     }
 
     const orderProducts = (event) => {
         const { value } = event.target;
-        let _products = [...productState];
+        let sort;
         setselectedOption(value);
 
-        if (value === "top-rated") {
-            _products.sort((a, b) => b.rating - a.rating);
-        }
-        else if (value === "lower-higher-price") {
-            _products.sort((a, b) => a.price - b.price);
-        }
-        else if (value === "higher-lower-price") {
-            _products.sort((a, b) => b.price - a.price);
-        }
+        if (value === "lower-higher-price") { sort = { price: 1 } } else if (value === "higher-lower-price") { sort = { price: -1 } } else { sort = { rating: -1 } }
 
-        setFilter(_products)
+        ProductAPI
+            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType } : { chance: categoryChanceType }, 12, {}, sort)
+            .then(products => {
+                setFilter(products)
+            })
+
         orderClose();
     }
+
     return (
         <>
-            <h1 className='title-page'>{capitalize(typeBody)}</h1>
+            <h1 className='title-page'>{capitalize(categoryChanceType)}</h1>
             <input className='SearchInput'
                 onChange={filterProducts}
                 type='text'

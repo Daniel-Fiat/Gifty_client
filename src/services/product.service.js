@@ -6,7 +6,7 @@ class ProductAPI extends InitAxios {
     }
 
     getAllproduct(find, limit, offset, sort) {
-        return this.axios.get(`/`, { find, limit, offset, sort })
+        return this.axios.post(`/`, { find, limit, offset, sort })
             .then((response) => response.data)
             .catch({ error: "error" });
     }
