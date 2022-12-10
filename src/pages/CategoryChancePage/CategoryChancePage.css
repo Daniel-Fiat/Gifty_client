@@ -28,8 +28,20 @@
     color: var(--color-blue);
 }
 
-#header-filter-order {
+#header-filter,
+#header-order {
     border: 0;
+}
+
+#header-filter h1,
+#header-order h1 {
+    font-size: 24px;
+    color: var(--color-red);
+}
+
+#filter-modal p {
+    color: var(--color-blue);
+    font-weight: bold;
 }
 
 #order label {

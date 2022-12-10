@@ -1,8 +1,9 @@
 import './CategoryChancePage.css';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Row, Modal, Button } from 'react-bootstrap';
+import { Row, Modal } from 'react-bootstrap';
 
+import MultiRangeSlider from "../../components/MultiRangeSlider/MultiRangeSlider";
 import ProductAPI from '../../services/product.service';
 import CardProductSearchList from '../../components/CardProductSearchList/CardProductSearchList';
 import capitalize from '../../utils/capitalize';
@@ -18,13 +19,18 @@ const CategoryChance = () => {
     const [productState, setProductState] = useState();
     const [filter, setFilter] = useState();
 
-    const [selectedOption, setselectedOption] = useState();
-    const [showOrder, setShowOrder] = useState(false);
-    const orderClose = () => setShowOrder(false);
+    const [selectedOption, setSelectedOption] = useState();
+    const [minPrice, setMinPrice] = useState();
+    const [maxPrice, setMaxPrice] = useState();
 
-    const orderShow = () => {
-        setShowOrder(true)
-    };
+    const [showOrder, setShowOrder] = useState(false);
+    const [showFilter, setShowFilter] = useState(false);
+
+    const orderClose = () => setShowOrder(false);
+    const orderShow = () => { setShowOrder(true) };
+
+    const filterClose = () => setShowFilter(false);
+    const filterShow = () => { setShowFilter(true) };
 
     useEffect(() => {
         ProductAPI
@@ -34,19 +40,20 @@ const CategoryChance = () => {
             })
     }, [])
 
-    const filterProducts = (event) => {
+    const filterProductsSearch = (event) => {
         const { value } = event.target;
-        let sort;
+        let sort, priceFilter;
 
         if (selectedOption === "lower-higher-price") { sort = { price: 1 } } else if (selectedOption === "higher-lower-price") { sort = { price: -1 } } else { sort = { rating: -1 } }
+        if (minPrice || maxPrice) { priceFilter = { $gte: minPrice, $lte: maxPrice } }
 
         ProductAPI
             .getAllproduct(
                 categoryChanceTypeApi === "category"
                     ?
-                    { category: categoryChanceType, name: { $regex: value, $options: 'i' } }
+                    { category: categoryChanceType, name: { $regex: value, $options: 'i' }, price: priceFilter }
                     :
-                    { chance: categoryChanceType, name: { $regex: value, $options: 'i' } }, 12, {}, sort)
+                    { chance: categoryChanceType, name: { $regex: value, $options: 'i' }, price: priceFilter }, 12, {}, sort)
             .then(products => {
                 setFilter(products)
             })
@@ -54,13 +61,14 @@ const CategoryChance = () => {
 
     const orderProducts = (event) => {
         const { value } = event.target;
-        let sort;
-        setselectedOption(value);
+        let sort, priceFilter;
+        setSelectedOption(value);
 
         if (value === "lower-higher-price") { sort = { price: 1 } } else if (value === "higher-lower-price") { sort = { price: -1 } } else { sort = { rating: -1 } }
+        if (minPrice || maxPrice) { priceFilter = { $gte: minPrice, $lte: maxPrice } }
 
         ProductAPI
-            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType } : { chance: categoryChanceType }, 12, {}, sort)
+            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType, price: priceFilter } : { chance: categoryChanceType, price: priceFilter }, 12, {}, sort)
             .then(products => {
                 setFilter(products)
             })
@@ -68,11 +76,33 @@ const CategoryChance = () => {
         orderClose();
     }
 
+    const updatePrice = (e) => {
+        const { min, max } = e;
+        setMinPrice(min);
+        setMaxPrice(max);
+    }
+
+    const filterProducts = (e) => {
+        e.preventDefault();
+        let sort;
+
+        if (selectedOption === "lower-higher-price") { sort = { price: 1 } } else if (selectedOption === "higher-lower-price") { sort = { price: -1 } } else { sort = { rating: -1 } }
+
+        ProductAPI
+            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType, price: { $gte: minPrice, $lte: maxPrice } } : { chance: categoryChanceType, price: { $gte: minPrice, $lte: maxPrice } }, 12, {}, sort)
+            .then(products => {
+                setFilter(products)
+            })
+
+        filterClose();
+
+    }
+
     return (
         <>
             <h1 className='title-page'>{capitalize(categoryChanceType)}</h1>
             <input className='SearchInput'
-                onChange={filterProducts}
+                onChange={filterProductsSearch}
                 type='text'
                 name='SearchInput'
                 placeholder='Search'>
@@ -82,7 +112,7 @@ const CategoryChance = () => {
                 <>
                     <div id="category-chance-links">
                         <div>
-                            <Link id="filter-category-chance-link">
+                            <Link id="filter-category-chance-link" onClick={filterShow}>
                                 <img id="filter-category-chance-img" src={filterIcon} alt={filterIcon} />
                                 <span>Filter</span>
                             </Link>
@@ -105,7 +135,7 @@ const CategoryChance = () => {
                     </Row>
 
                     <Modal show={showOrder} onHide={orderClose}>
-                        <Modal.Header id="header-filter-order" closeButton></Modal.Header>
+                        <Modal.Header id="header-filter" closeButton><h1>Order by</h1></Modal.Header>
                         <Modal.Body>
                             {
                                 <form id="order">
@@ -116,6 +146,26 @@ const CategoryChance = () => {
                                     <label>Higher to lower price</label>
                                     <input type="radio" name="order" onChange={orderProducts} value="higher-lower-price" checked={selectedOption === "higher-lower-price"} /><br />
                                 </form>
+                            }
+                        </Modal.Body>
+                    </Modal>
+
+                    <Modal id="filter-modal" show={showFilter} onHide={filterClose}>
+                        <Modal.Header id="header-filter" closeButton><h1>Filters</h1></Modal.Header>
+                        <Modal.Body>
+                            {
+                                <>
+                                    <form onSubmit={filterProducts}>
+                                        <p>Range price</p>
+                                        <MultiRangeSlider
+                                            name="range-price"
+                                            min={0}
+                                            max={2500}
+                                            onChange={updatePrice}
+                                        />
+                                        <button type='submit'>Apply filters</button>
+                                    </form>
+                                </>
                             }
                         </Modal.Body>
                     </Modal>

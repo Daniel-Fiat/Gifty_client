@@ -2,8 +2,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import homelogo from '../../assets/Boton1.png';
 import lupa from '../../assets/lupa.png';
-import perfil from '../../assets/perfil.png';
 import burger from '../../assets/burger.png';
+import notification from '../../assets/notificacion.png';
 import regalos from '../../assets/regalos.png';
 import './Navbar.css';
 import { useEffect, useState } from 'react';
@@ -26,10 +26,10 @@ function NavBar() {
                 <span>Search</span>
             </div>
             <div className="d-flex flex-column align-items-center">
-                <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/profile'>
-                    <img src={perfil} alt="" />
+                <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/'>
+                    <img src={notification} alt="" />
                 </Link>
-                <span>Perfil</span>
+                <span>Notifications</span>
             </div>
             <div className="d-flex flex-column align-items-center">
                 <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/menu'>
