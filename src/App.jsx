@@ -10,6 +10,7 @@ import Register from './pages/RegisterPage/RegisterPage';
 import RegisterLoginPage from './pages/RegisterLoginPage/RegisterLoginPage';
 import Login from './pages/LoginPage/LoginPage';
 import Catalog from './pages/user/CatalogPage/CatalogPage';
+import Mygifts from './pages/user/Mygifts/MygiftsPage';
 import WishList from './pages/user/WishListPage/WishListPage';
 import CreateProduct from './pages/user/CreateProduct/CreateProductPage';
 import EditProduct from './pages/user/EditProduct/EditProductPage';
@@ -38,6 +39,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/user/catalog' element={user ? <Catalog /> : <RegisterLoginPage />} />
+          <Route path='/user/mygifts' element={user ? <Mygifts /> : <RegisterLoginPage />} />
           <Route path='/user/wishList' element={user ? <WishList /> : <RegisterLoginPage />} />
           <Route path='/user/CreateProduct' element={<CreateProduct />} />
           <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />

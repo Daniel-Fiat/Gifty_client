@@ -11,6 +11,7 @@ const Menu = () => {
             <div>
                 <div className="menu-link"><Link to='/user/wishList'>My wishList</Link></div>
                 <div className="menu-link"><Link to='/user/catalog'>Catalog</Link></div>
+                <div className="menu-link"><Link to='/user/mygifts'>Mygifts</Link></div>
                 {user && <div className="menu-link"><Link to='/' onClick={logOut}>Logout</Link></div>}
             </div>
         </>

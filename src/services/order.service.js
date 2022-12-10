@@ -5,10 +5,19 @@ class OrderAPI extends InitAxios {
         super('orders');
     }
     newOrder(body) {
-        console.log(body)
         return this.axios.post(`/new`, body)
             .then((response) => response.data)
             .catch({ error: "error" });
+    }
+    getBySeller(id) {
+        return this.axios.get(`/seller/${id}`)
+            .then((response) => response.data)
+            .catch({ error: "error" })
+    }
+    getByClient(id) {
+        return this.axios.get(`/client/${id}`)
+            .then((response) => response.data)
+            .catch({ error: "error" })
     }
 }
 export default new OrderAPI();
