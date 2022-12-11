@@ -17,6 +17,7 @@ import EditProduct from './pages/user/EditProduct/EditProductPage';
 import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
 import GiftyProduct from './pages/Products/giftyProductPage/giftyProductPage';
 import CategoryChance from './pages/CategoryChancePage/CategoryChancePage';
+import MyShop from './pages/user/MyShop/MyShopPage';
 
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
@@ -41,6 +42,7 @@ function App() {
           <Route path='/user/catalog' element={user ? <Catalog /> : <RegisterLoginPage />} />
           <Route path='/user/mygifts' element={user ? <Mygifts /> : <RegisterLoginPage />} />
           <Route path='/user/wishList' element={user ? <WishList /> : <RegisterLoginPage />} />
+          <Route path='/user/shop' element={user ? <MyShop /> : <RegisterLoginPage />} />
           <Route path='/user/CreateProduct' element={<CreateProduct />} />
           <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
         </Routes>

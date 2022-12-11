@@ -42,12 +42,13 @@ const CreateProduct = () => {
                         name='imgUrl'
                         placeholder='imgUrl'>
                     </input>
-                    <input className='NewproductInput'
+                    <textarea className='NewproductInput'
                         onChange={updateNewProduct}
-                        type='text'
                         name='description'
+                        rows="4"
+                        cols="40"
                         placeholder='description'>
-                    </input>
+                    </textarea>
                     <input className='NewproductInput'
                         onChange={updateNewProduct}
                         type='text'

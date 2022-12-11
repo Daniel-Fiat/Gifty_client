@@ -19,7 +19,7 @@ const Register = () => {
         if (matchPass && user.email) {
             console.log(user)
             UserApi.createUser(user)
-                .then(() => navigate('/'))
+                .then(() => navigate('/login'))
                 .catch(err => setError(true))
         } else {
             setError(true)

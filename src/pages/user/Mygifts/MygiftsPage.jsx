@@ -1,31 +1,30 @@
 import './MygiftsPage.css'
 import { useState, useEffect, useContext } from 'react';
 import OrderAPI from '../../../services/order.service'
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
-import CardCatalogList from '../../../components/CardCatalogList/CardCatalogList';
+import CardMyGiftsList from '../../../components/CardMyGiftsList/CardMyGiftsList';
 
 const Mygifts = () => {
-    const { user } = useContext(AuthContext);
-    const [orders, setorders] = useState([])
-    localStorage.setItem("Navbar", true);
+    const { user } = useContext(AuthContext)
+    const [orders, setOrders] = useState([])
+    localStorage.setItem("Navbar", true)
 
     useEffect(() => {
         OrderAPI.getByClient(user._id).then(orders => {
-            setorders(orders)
-            console.log(orders)
+            setOrders(orders)
         })
     }, [])
+
 
     return (
         <>
             <h1>Mygiftys</h1>
             {
-                orders.map(orders => {
+                orders.map(order => {
                     return (
                         <>
-                            <CardCatalogList id="card" product={orders.productID}>
-                            </CardCatalogList>
+                            <CardMyGiftsList id="card" order={order}>
+                            </CardMyGiftsList>
                         </>
                     )
                 })

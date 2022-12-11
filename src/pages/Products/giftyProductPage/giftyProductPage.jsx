@@ -29,11 +29,13 @@ const GiftyProduct = () => {
         setOrder({ ...order, [name]: value })
         console.log(product.sellerUser._id)
     }
+
     const updateAdress = (event) => {
         const { name, value } = event.target
         setAdress({ ...adress, [name]: value })
         console.log(adress)
     }
+
     useEffect(() => {
         UserApi.getOne(user?._id).then(userApi => {
             const newvalidate = userApi.wishList.includes(product._id)
@@ -47,12 +49,14 @@ const GiftyProduct = () => {
         const newvalidate = true
         setwishList(newvalidate)
     }
+
     const addWishList = (event) => {
         event.preventDefault()
         UserApi.addWishList(user._id, id).then()
         const newvalidate = false
         setwishList(newvalidate)
     }
+
     const CreateProduct = (event) => {
         event.preventDefault()
         const body = {
@@ -62,14 +66,13 @@ const GiftyProduct = () => {
             "productID": product._id,
             "dedication": order.dedication,
             "deliverDate": order.date,
-            "State": "pendconfir",
+            "State": "pendingPayment",
             "deliveryAddress": adress,
         }
         OrderApi.newOrder(body)
-        navigate('/')
-
-
+        navigate('/user/mygifts')
     }
+
     return (
         <div id="ProductCard">
             <img id="IMGproduct" src={product.imgUrl} alt="esto" />

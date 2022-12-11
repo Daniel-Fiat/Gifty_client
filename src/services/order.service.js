@@ -19,5 +19,8 @@ class OrderAPI extends InitAxios {
             .then((response) => response.data)
             .catch({ error: "error" })
     }
+    updateState(id, state) {
+        return this.axios.put(`/update/${id}`, { state: state })
+    }
 }
 export default new OrderAPI();
