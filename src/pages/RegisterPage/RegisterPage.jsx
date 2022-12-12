@@ -17,7 +17,6 @@ const Register = () => {
     const createNewUSer = (event) => {
         event.preventDefault()
         if (matchPass && user.email) {
-            console.log(user)
             UserApi.createUser(user)
                 .then(() => navigate('/login'))
                 .catch(err => setError(true))

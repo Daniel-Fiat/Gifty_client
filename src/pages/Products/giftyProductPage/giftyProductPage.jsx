@@ -66,7 +66,7 @@ const GiftyProduct = () => {
             "productID": product._id,
             "dedication": order.dedication,
             "deliverDate": order.date,
-            "State": "pendingPayment",
+            "State": "pendingConfirmation",
             "deliveryAddress": adress,
         }
         OrderApi.newOrder(body)
