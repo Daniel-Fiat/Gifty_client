@@ -5,6 +5,12 @@ class ProductAPI extends InitAxios {
         super('products');
     }
 
+    uploadImage = (file) => {
+        return this.axios.post("/uploadImage", file)
+            .then((response) => response.data)
+            .catch({ error: "error" });
+    }
+
     getAllproduct(find, limit, offset, sort) {
         return this.axios.post(`/`, { find, limit, offset, sort })
             .then((response) => response.data)

@@ -8,6 +8,7 @@ const CreateProduct = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
+    const [imageUrl, setImageUrl] = useState("");
     localStorage.setItem("Navbar", true);
 
     const createNewProduct = (event) => {
@@ -17,13 +18,22 @@ const CreateProduct = () => {
             navigate('/user/catalog')
         )
     }
+    const handleFileUpload = (e) => {
+        const uploadData = new FormData();
+        uploadData.append("imageUrl", e.target.files[0]);
+        ProductApi
+            .uploadImage(uploadData)
+            .then(response => {
+                console.log("response is:" + response.fileUrl)
+                setProduct({ ...Product, imgUrl: response.fileUrl })
+            })
+            .catch(err => console.log("Error while uploading the file: ", err));
+    };
     const updateNewProduct = (event) => {
-        const { name, value } = event.target
-        setProduct({ ...Product, [name]: value })
+        const { name, value } = event.target;
+        setProduct({ ...Product, [name]: value });
         console.log(Product)
     }
-
-
 
     return (
         <div className='Newproduct-form-container'>
@@ -36,12 +46,13 @@ const CreateProduct = () => {
                         name='name'
                         placeholder='name'>
                     </input>
-                    <input className='NewproductInput'
+                    {/* <input className='NewproductInput'
                         onChange={updateNewProduct}
                         type='text'
                         name='imgUrl'
                         placeholder='imgUrl'>
-                    </input>
+                    </input> */}
+                    <input type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
                     <textarea className='NewproductInput'
                         onChange={updateNewProduct}
                         name='description'
