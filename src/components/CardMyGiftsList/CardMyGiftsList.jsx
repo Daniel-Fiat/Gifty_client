@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ReviewAPI from '../../services/review.service'
+import OrderAPI from '../../services/order.service'
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
@@ -18,6 +19,7 @@ const CardCatalogList = ({ order }) => {
         review.userId = order.clientUser._id
         review.product_id = order.productID._id
         ReviewAPI.newReview(review)
+        OrderAPI.updateState(order._id, "review")
         console.log(review)
         console.log(order.productID._id)
     }
