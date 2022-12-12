@@ -9,6 +9,11 @@ class ReviewAPI extends InitAxios {
             .then((response) => response.data)
             .catch({ error: "error" });
     }
+    getByProduct(idProduct) {
+        return this.axios.get(`/review/${idProduct}`)
+            .then((response) => response.data)
+            .catch({ error: "error" });
+    }
 
 }
 export default new ReviewAPI();

@@ -2,6 +2,7 @@ import { AuthContext } from '../../../context/auth.context';
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
+import ReviewAPI from '../../../services/review.service'
 import './ProductDetails.css'
 import UserApi from '../../../services/user.service'
 import wishTrue from '../../../assets/Corazon-rojo.png';
@@ -13,6 +14,7 @@ const ProductDetail = () => {
     localStorage.setItem("Navbar", true);
     const [validateWishList, setValidateWishList] = useState()
     const [product, setProduct] = useState({})
+    const [reviews, setReviews] = useState()
     const { user } = useContext(AuthContext)
     const { id } = useParams()
 
@@ -32,6 +34,14 @@ const ProductDetail = () => {
                 }
             })
     }, [validateWishList])
+    useEffect(() => {
+        ReviewAPI.getByProduct(id).then(reviews => {
+            setReviews(reviews)
+            console.log(reviews)
+        })
+
+
+    }, [])
 
     const removeWishList = (event) => {
         event.preventDefault()
@@ -79,6 +89,19 @@ const ProductDetail = () => {
             <Link to={`/gifty/${product._id}`}>
                 Regalar
             </Link>
+
+            {reviews?.map(review => {
+                return (
+                    <div>
+                        <h1> {"⭐".repeat(review.rating)}</h1>
+                        <h1> {review.userId.email}</h1>
+                        <span> {review.createdAt}</span>
+                        <p> {review.comment}</p>
+                    </div>
+                )
+            })}
+
+
         </>
     );
 

@@ -20,8 +20,6 @@ const CardCatalogList = ({ order }) => {
         review.product_id = order.productID._id
         ReviewAPI.newReview(review)
         OrderAPI.updateState(order._id, "review")
-        console.log(review)
-        console.log(order.productID._id)
     }
 
     return (
