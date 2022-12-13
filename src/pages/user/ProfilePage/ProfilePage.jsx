@@ -3,6 +3,7 @@ const profile = () => {
     return (
         <>
             <h1>profile</h1>
+            <h1>profile</h1>
         </>
     );
 
