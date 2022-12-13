@@ -79,11 +79,8 @@ const Search = () => {
                                 <CardSearchList img={BabyShower} title="Baby Shower" path="chance-babyshower"></CardSearchList>
                                 <CardSearchList img={Graduaciones} title="Graduation" path="chance-graduation"></CardSearchList>
                             </Row>
-
                         </div>
                 }
-
-
             </div>
         </Row>
     );

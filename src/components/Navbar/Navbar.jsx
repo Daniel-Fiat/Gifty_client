@@ -7,14 +7,10 @@ import notification from '../../assets/notificacion.png';
 import './Navbar.css';
 
 function NavBar() {
-    const location = useLocation().pathname;
-    console.log(location.toLowerCase());
-    if (location.toLowerCase() === "/login" ||
-        location.toLowerCase() === "/registerlogin" ||
-        location.toLowerCase() === "/register" ||
-        location.toLowerCase().includes("/sucesspayment/") ||
-        location.toLowerCase().includes("/cancelpayment/")
-    ) {
+    const location = useLocation().pathname.toLowerCase();
+    const paths = ["/login", "/registerlogin", "/register", "/sucesspayment/", "/cancelpayment/"];
+
+    if (paths.includes(location)) {
         return null
     } else {
         return (
