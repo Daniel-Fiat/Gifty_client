@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 
 
 const GiftyProduct = () => {
-    const navigate = useNavigate();
     const [validateWishList, setwishList] = useState()
     const [product, setProduct] = useState({})
     const [order, setOrder] = useState({})
