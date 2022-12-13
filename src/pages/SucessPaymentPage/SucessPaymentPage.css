@@ -1,0 +1,46 @@
+.sucess-payment-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#check-green {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.elipse-blue-up {
+    position: absolute;
+    width: 30vw;
+    top: -3vh;
+    left: 0;
+    z-index: -2;
+}
+
+.elipse-pink-up {
+    position: absolute;
+    width: 46vw;
+    top: -7vh;
+    left: 0vw;
+    z-index: -1;
+}
+
+.elipse-blue-down {
+    position: absolute;
+    width: 30vw;
+    bottom: 0vh;
+    right: 0;
+    z-index: -1;
+}
+
+.elipse-yellow-down {
+    position: absolute;
+    width: 46vw;
+    bottom: 0vh;
+    right: 10vw;
+    z-index: -2;
+}

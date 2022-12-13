@@ -18,15 +18,13 @@ import ProductDetail from './pages/Products/ProductDetails/ProductDetailsPage';
 import GiftyProduct from './pages/Products/giftyProductPage/giftyProductPage';
 import CategoryChance from './pages/CategoryChancePage/CategoryChancePage';
 import MyShop from './pages/user/MyShop/MyShopPage';
+import SucessPayment from './pages/SucessPaymentPage/SucessPaymentPage';
+import CancelPayment from './pages/CancelPaymentPage/CancelPaymentPage';
 
-import { AuthContext } from './context/auth.context';
-import { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import IsPrivate from './components/Routes/IsPrivate';
 // windows.location?
 function App() {
-  const { user } = useContext(AuthContext);
-
   return (
     <div>
       <Container>
@@ -44,9 +42,11 @@ function App() {
           <Route path='/user/catalog' element={<IsPrivate> <Catalog /> </IsPrivate>} />
           <Route path='/user/mygifts' element={<IsPrivate> <Mygifts /> </IsPrivate>} />
           <Route path='/user/wishList' element={<IsPrivate> <WishList /> </IsPrivate>} />
-          < Route path='/user/shop' element={<IsPrivate> <MyShop /> </IsPrivate>} />
+          <Route path='/user/shop' element={<IsPrivate> <MyShop /> </IsPrivate>} />
           <Route path='/user/CreateProduct' element={<CreateProduct />} />
           <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
+          <Route path='/sucessPayment/:id' element={<IsPrivate> <SucessPayment /> </IsPrivate>} />
+          <Route path='/cancelPayment/:id' element={<IsPrivate> <CancelPayment /> </IsPrivate>} />
         </Routes>
       </Container>
       <div className='margin-bottom-app'></div>
