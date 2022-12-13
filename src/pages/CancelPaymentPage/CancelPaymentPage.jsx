@@ -3,10 +3,18 @@ import elipseBlueUp from '../../assets/ElipseAzulArriba.png';
 import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
+import OrderApi from '../../services/order.service'
 import './CancelPaymentPage.css';
 import { Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+
 const CancelPayment = () => {
     localStorage.removeItem("Navbar");
+    const { id } = useParams()
+    useEffect(() => {
+        OrderApi.updateState(id, "reject")
+    })
     return (
         <Row>
             <div className='sucess-payment-container'>
