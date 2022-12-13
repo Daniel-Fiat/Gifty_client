@@ -5,7 +5,7 @@ import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
 import { Link } from 'react-router-dom';
 
-const Register = () => {
+const RegisterLogin = () => {
     localStorage.removeItem("Navbar");
 
     return (
@@ -24,4 +24,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default RegisterLogin;

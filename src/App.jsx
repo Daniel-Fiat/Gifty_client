@@ -7,7 +7,7 @@ import Search from './pages/SearchPage/SearchPage';
 import Profile from './pages/ProfilePage/ProfilePage';
 import Menu from './pages/MenuPage/MenuPage';
 import Register from './pages/RegisterPage/RegisterPage';
-import RegisterLoginPage from './pages/RegisterLoginPage/RegisterLoginPage';
+import RegisterLogin from './pages/RegisterLoginPage/RegisterLoginPage';
 import Login from './pages/LoginPage/LoginPage';
 import Catalog from './pages/user/CatalogPage/CatalogPage';
 import Mygifts from './pages/user/Mygifts/MygiftsPage';
@@ -22,6 +22,7 @@ import MyShop from './pages/user/MyShop/MyShopPage';
 import { AuthContext } from './context/auth.context';
 import { useContext } from 'react';
 import { Container } from 'react-bootstrap';
+import IsPrivate from './components/Routes/IsPrivate';
 // windows.location?
 function App() {
   const { user } = useContext(AuthContext);
@@ -34,15 +35,16 @@ function App() {
           <Route path='/search' element={<Search />} />
           <Route path='/search/:type' element={<CategoryChance />} />
           <Route path='/product/:id' element={<ProductDetail />} />
-          <Route path='/gifty/:id' element={user ? <GiftyProduct /> : <RegisterLoginPage />} />
-          <Route path='/profile' element={user ? <Profile /> : <RegisterLoginPage />} />
+          <Route path='/gifty/:id' element={<IsPrivate> <GiftyProduct /> </IsPrivate>} />
+          <Route path='/profile' element={<IsPrivate> <Profile /> </IsPrivate>} />
           <Route path='/menu' element={<Menu />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/user/catalog' element={user ? <Catalog /> : <RegisterLoginPage />} />
-          <Route path='/user/mygifts' element={user ? <Mygifts /> : <RegisterLoginPage />} />
-          <Route path='/user/wishList' element={user ? <WishList /> : <RegisterLoginPage />} />
-          <Route path='/user/shop' element={user ? <MyShop /> : <RegisterLoginPage />} />
+          <Route path='/registerLogin' element={<RegisterLogin />} />
+          <Route path='/user/catalog' element={<IsPrivate> <Catalog /> </IsPrivate>} />
+          <Route path='/user/mygifts' element={<IsPrivate> <Mygifts /> </IsPrivate>} />
+          <Route path='/user/wishList' element={<IsPrivate> <WishList /> </IsPrivate>} />
+          < Route path='/user/shop' element={<IsPrivate> <MyShop /> </IsPrivate>} />
           <Route path='/user/CreateProduct' element={<CreateProduct />} />
           <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
         </Routes>
