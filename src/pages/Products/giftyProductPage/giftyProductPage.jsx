@@ -1,11 +1,11 @@
 import { AuthContext } from '../../../context/auth.context';
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
 import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
 import OrderApi from '../../../services/order.service'
 import StripeAPI from '../../../services/stripe.services'
+import { useParams } from 'react-router-dom';
 
 
 const GiftyProduct = () => {
@@ -85,7 +85,7 @@ const GiftyProduct = () => {
                     }],
                 "mode": "payment",
                 "success_url": `http://localhost:3000/sucessPayment/${res._id}`,
-                "cancel_url": "http://localhost:3000/"
+                "cancel_url": `http://localhost:3000/cancelPayment/${res._id}`
 
             }
             StripeAPI.checkout(checkout).then(res => window.location.href = res.url)
@@ -109,7 +109,7 @@ const GiftyProduct = () => {
                     <button type="submit">remuv</button>
                 </form>)
             }
-            <form onSubmit={CreateOrder}>
+            <form id="formRegalo" onSubmit={CreateOrder}>
                 <label >Escribe tu dedicatoria</label>
                 <textarea
                     name="dedication"
@@ -117,12 +117,17 @@ const GiftyProduct = () => {
                     cols="40"
                     onChange={updateOrder}
                 ></textarea>
-                <label >El ife Fecha y Hora</label>
+                <label >Fecha y Hora</label>
                 <input onChange={updateAdress} type="date" name="date" id="" onChange={updateOrder} />
+                <label >Calle</label>
                 <input onChange={updateAdress} type="text" name="street" id="" />
+                <label >Numero</label>
                 <input onChange={updateAdress} type="text" name="number" id="" />
-                <input onChange={updateAdress} type="text" name="door" id="" />
+                <label >Piso</label>
                 <input onChange={updateAdress} type="text" name="floor" id="" />
+                <label >Puerta</label>
+                <input onChange={updateAdress} type="text" name="door" id="" />
+                <label >Ciudad</label>
                 <input onChange={updateAdress} type="text" name="city" id="" />
                 <button type="submit">CreateProduct</button>
             </form>

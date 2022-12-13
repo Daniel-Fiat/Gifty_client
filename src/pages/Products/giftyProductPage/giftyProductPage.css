@@ -1,0 +1,4 @@
+#formRegalo {
+    display: flex;
+    flex-direction: column;
+}

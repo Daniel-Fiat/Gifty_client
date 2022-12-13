@@ -3,9 +3,17 @@ import elipseBlueUp from '../../assets/ElipseAzulArriba.png';
 import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';
 import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
+import OrderApi from '../../services/order.service'
 import './SucessPaymentPage.css';
 import { Row } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 const SucessPayment = () => {
+    const { id } = useParams()
+    useEffect(() => {
+        OrderApi.updateState(id, "pendingConfirmation")
+    })
     return (
         <Row>
             <div className='sucess-payment-container'>
