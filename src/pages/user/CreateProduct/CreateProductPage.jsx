@@ -1,7 +1,7 @@
 import './CreateProduct.css'
 import ProductApi from '../../../services/product.service'
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
 
 const CreateProduct = () => {
@@ -46,12 +46,7 @@ const CreateProduct = () => {
                         name='name'
                         placeholder='name'>
                     </input>
-                    {/* <input className='NewproductInput'
-                        onChange={updateNewProduct}
-                        type='text'
-                        name='imgUrl'
-                        placeholder='imgUrl'>
-                    </input> */}
+
                     <input type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
                     <textarea className='NewproductInput'
                         onChange={updateNewProduct}
@@ -83,6 +78,15 @@ const CreateProduct = () => {
                         <option value="anniversary">anniversary</option>
                         <option value="Valentine">Valentine</option>
                         <option value="graduation">graduation</option>
+                    </select>
+                    <label htmlFor="">rangeAge</label>
+                    <select onChange={updateNewProduct} name="rangeAge" id="categorySelect">
+                        <option value=""></option>
+                        <option value="babyboomers">babyboomers</option>
+                        <option value="generaciónX">generaciónX</option>
+                        <option value="millennials">millennials</option>
+                        <option value="generaciónZ">generaciónZ</option>
+                        <option value="Alpha">Alpha</option>
                     </select>
                     <button type="submit" id="registerBoton">Create Product</button>
                 </form>

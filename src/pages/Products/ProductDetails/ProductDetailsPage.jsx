@@ -80,6 +80,7 @@ const ProductDetail = () => {
                         <h1>{product.name}</h1>
                         <p>{product.description}</p>
                         <span>{`$ ${product.price}`}</span>
+                        <span>{product.rangeAge}</span>
                         <span>{product.sellerUser?.email}</span>
                         <h1>{"⭐".repeat(product.rating)}</h1>
                     </div>)

@@ -19,13 +19,6 @@ const Search = () => {
 
     return (
         <>
-            <h1>Search</h1>
-            <input className='CatalogInput'
-                // onChange={updateUser}
-                type='text'
-                name='SearchInput'
-                placeholder='Search'>
-            </input>
             <div className="menu-link"><Link to='/user/CreateProduct'>New Product</Link></div>
             <Row>
                 {

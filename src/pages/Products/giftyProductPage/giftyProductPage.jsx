@@ -5,6 +5,7 @@ import ProductAPI from '../../../services/product.service'
 import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
 import OrderApi from '../../../services/order.service'
+import StripeAPI from '../../../services/stripe.services'
 
 
 const GiftyProduct = () => {
@@ -57,7 +58,7 @@ const GiftyProduct = () => {
         setwishList(newvalidate)
     }
 
-    const CreateProduct = (event) => {
+    const CreateOrder = (event) => {
         event.preventDefault()
         const body = {
             "price": product.price,
@@ -70,7 +71,25 @@ const GiftyProduct = () => {
             "deliveryAddress": adress,
         }
         OrderApi.newOrder(body)
-        navigate('/user/mygifts')
+        const checkout = {
+            "line_items": [
+                {
+                    "price_data": {
+                        "currency": "usd",
+                        "product_data": {
+                            "name": product.name
+                        },
+                        "unit_amount": product.price * 100
+                    },
+                    "quantity": 1
+                }],
+            "mode": "payment",
+            "success_url": "http://localhost:3000/",
+            "cancel_url": "http://localhost:3000/"
+
+        }
+        StripeAPI.checkout(checkout).then(res => window.location.href = res.url)
+
     }
 
     return (
@@ -89,7 +108,7 @@ const GiftyProduct = () => {
                     <button type="submit">remuv</button>
                 </form>)
             }
-            <form onSubmit={CreateProduct}>
+            <form onSubmit={CreateOrder}>
                 <label >Escribe tu dedicatoria</label>
                 <textarea
                     name="dedication"
