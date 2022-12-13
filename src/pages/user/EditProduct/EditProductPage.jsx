@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
 
 const Register = () => {
-    localStorage.setItem("Navbar", true);
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
     const [UpdateProduct, setUpdateProduct] = useState(Product)

@@ -10,7 +10,6 @@ import StripeAPI from '../../../services/stripe.services'
 
 const GiftyProduct = () => {
     const navigate = useNavigate();
-    localStorage.setItem("Navbar", true);
     const [validateWishList, setwishList] = useState()
     const [product, setProduct] = useState({})
     const [order, setOrder] = useState({})

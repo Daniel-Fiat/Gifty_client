@@ -9,7 +9,6 @@ import CardCatalogList from '../../../components/CardCatalogList/CardCatalogList
 const Search = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([])
-    localStorage.setItem("Navbar", true);
 
     useEffect(() => {
         ProductAPI.getCatalog(user._id).then(products => {

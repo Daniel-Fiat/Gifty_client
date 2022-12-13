@@ -11,7 +11,6 @@ import wishFalse from '../../../assets/Corazon-Blanco.png';
 //http://localhost:3000/product/638f21e7fc32fef2b3800a95
 
 const ProductDetail = () => {
-    localStorage.setItem("Navbar", true);
     const [validateWishList, setValidateWishList] = useState()
     const [product, setProduct] = useState({})
     const [reviews, setReviews] = useState()

@@ -11,7 +11,6 @@ import filterIcon from '../../assets/filter-icon.png';
 import orderIcon from '../../assets/order-icon.png';
 
 const CategoryChance = () => {
-    localStorage.setItem("Navbar", true);
     const { type } = useParams();
     const categoryChanceTypeApi = type.split("-")[0];
     const categoryChanceType = type.split("-")[1];

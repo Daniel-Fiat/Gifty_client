@@ -29,6 +29,12 @@ function App() {
     <div>
       <Container>
         <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route path='/registerLogin' element={<RegisterLogin />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/sucessPayment/:id' element={<IsPrivate> <SucessPayment /> </IsPrivate>} />
+          <Route path='/cancelPayment/:id' element={<IsPrivate> <CancelPayment /> </IsPrivate>} />
+
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
           <Route path='/search/:type' element={<CategoryChance />} />
@@ -36,20 +42,14 @@ function App() {
           <Route path='/gifty/:id' element={<IsPrivate> <GiftyProduct /> </IsPrivate>} />
           <Route path='/profile' element={<IsPrivate> <Profile /> </IsPrivate>} />
           <Route path='/menu' element={<Menu />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/registerLogin' element={<RegisterLogin />} />
           <Route path='/user/catalog' element={<IsPrivate> <Catalog /> </IsPrivate>} />
           <Route path='/user/mygifts' element={<IsPrivate> <Mygifts /> </IsPrivate>} />
           <Route path='/user/wishList' element={<IsPrivate> <WishList /> </IsPrivate>} />
           <Route path='/user/shop' element={<IsPrivate> <MyShop /> </IsPrivate>} />
           <Route path='/user/CreateProduct' element={<CreateProduct />} />
           <Route path='/user/UpdateProduct/:id' element={<EditProduct />} />
-          <Route path='/sucessPayment/:id' element={<IsPrivate> <SucessPayment /> </IsPrivate>} />
-          <Route path='/cancelPayment/:id' element={<IsPrivate> <CancelPayment /> </IsPrivate>} />
         </Routes>
       </Container>
-      <div className='margin-bottom-app'></div>
       <NavBar />
     </div>
   );

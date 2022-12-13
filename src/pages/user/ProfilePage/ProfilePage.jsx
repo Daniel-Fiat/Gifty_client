@@ -4,7 +4,7 @@ import { AuthContext } from '../../../context/auth.context';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    localStorage.setItem("Navbar", true);
+
     return (
         <>
             <h1>profile</h1>

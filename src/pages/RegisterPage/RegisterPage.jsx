@@ -6,9 +6,9 @@ import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
 import UserApi from '../../services/user.service'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 
 const Register = () => {
-    localStorage.removeItem("Navbar");
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     const [matchPass, setMatchPass] = useState(false)
@@ -39,37 +39,39 @@ const Register = () => {
 
 
     return (
-        <div className='register-form-container'>
-            <img className="elipse-blue-up" src={elipseBlueUp} alt="" />
-            <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
-            <div id="register-form">
-                <h1>Register</h1>
-                <form onSubmit={createNewUSer}>
-                    <input className='RegisterInput'
-                        onChange={updateNewUser}
-                        type='email'
-                        name='email'
-                        placeholder='Email'>
-                    </input>
-                    <input className='RegisterInput'
-                        onChange={updateNewUser}
-                        type='password'
-                        name='password'
-                        placeholder='************'>
-                    </input>
-                    <input className='RegisterInput'
-                        onChange={testmatchPass}
-                        type='password'
-                        name='pass2'
-                        placeholder='************'>
-                    </input>
-                    <button type="submit" id="registerBoton">Create User</button>
-                    {errUserCreate && <p id="msgred">Password not match </p>}
-                </form>
+        <Row>
+            <div className='register-form-container'>
+                <img className="elipse-blue-up" src={elipseBlueUp} alt="" />
+                <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
+                <div id="register-form">
+                    <h1>Register</h1>
+                    <form onSubmit={createNewUSer}>
+                        <input className='RegisterInput'
+                            onChange={updateNewUser}
+                            type='email'
+                            name='email'
+                            placeholder='Email'>
+                        </input>
+                        <input className='RegisterInput'
+                            onChange={updateNewUser}
+                            type='password'
+                            name='password'
+                            placeholder='************'>
+                        </input>
+                        <input className='RegisterInput'
+                            onChange={testmatchPass}
+                            type='password'
+                            name='pass2'
+                            placeholder='************'>
+                        </input>
+                        <button type="submit" id="registerBoton">Create User</button>
+                        {errUserCreate && <p id="msgred">Password not match </p>}
+                    </form>
+                </div>
+                <img className="elipse-blue-down" src={elipseBlueDown} alt="" />
+                <img className="elipse-yellow-down" src={elipseYellowDown} alt="" />
             </div>
-            <img className="elipse-blue-down" src={elipseBlueDown} alt="" />
-            <img className="elipse-yellow-down" src={elipseYellowDown} alt="" />
-        </div>
+        </Row>
     );
 
 }

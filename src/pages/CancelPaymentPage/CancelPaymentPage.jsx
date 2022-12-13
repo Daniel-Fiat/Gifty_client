@@ -6,7 +6,6 @@ import elipseYellowDown from '../../assets/ElipseAmarillaAbajo.png';
 import './CancelPaymentPage.css';
 import { Row } from 'react-bootstrap';
 const CancelPayment = () => {
-    localStorage.removeItem("Navbar");
     return (
         <Row>
             <div className='sucess-payment-container'>

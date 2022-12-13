@@ -1,6 +1,6 @@
 .Newproduct-form-container {
     width: 100vw;
-    height: calc(100vh - 64.859px);
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;

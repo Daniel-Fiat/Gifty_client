@@ -9,7 +9,6 @@ const CreateProduct = () => {
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
     const [imageUrl, setImageUrl] = useState("");
-    localStorage.setItem("Navbar", true);
 
     const createNewProduct = (event) => {
         event.preventDefault()

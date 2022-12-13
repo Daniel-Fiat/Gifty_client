@@ -21,7 +21,6 @@ import CardProductSearchList from '../../components/CardProductSearchList/CardPr
 
 
 const Search = () => {
-    localStorage.setItem("Navbar", true);
     const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState();
 
@@ -42,50 +41,51 @@ const Search = () => {
     }
 
     return (
-        <>
-            <h1>Search</h1>
-            <input className='SearchInput'
-                onChange={filterProducts}
-                type='text'
-                name='SearchInput'
-                placeholder='Search'>
-            </input>
+        <Row>
+            <div>
+                <h1>Search</h1>
+                <input className='SearchInput'
+                    onChange={filterProducts}
+                    type='text'
+                    name='SearchInput'
+                    placeholder='Search'>
+                </input>
 
-            {
-                filter
-                    ?
-                    <Row>{
-                        filter.map(filter => <CardProductSearchList product={filter}></CardProductSearchList>)
-                    }
-                    </Row>
-                    :
-                    <div>
-                        <h2 className='title-search-category'>Search by Category</h2>
-                        <Row>
-                            <CardSearchList img={Desayunos} title="Breakfast" path="category-breakfast"></CardSearchList>
-                            <CardSearchList img={Pasteleria} title="Cakes" path="category-cakes"></CardSearchList>
-                            <CardSearchList img={Picadas} title="Tapas" path="category-tapas"></CardSearchList>
-                            <CardSearchList img={Bebidas} title="Drinks" path="category-drinks"></CardSearchList>
-                            <CardSearchList img={Flores} title="Flowers" path="category-flowers"></CardSearchList>
-                            <CardSearchList img={Objetos} title="Objects" path="category-objects"></CardSearchList>
+                {
+                    filter
+                        ?
+                        <Row>{
+                            filter.map(filter => <CardProductSearchList product={filter}></CardProductSearchList>)
+                        }
                         </Row>
+                        :
+                        <div>
+                            <h2 className='title-search-category'>Search by Category</h2>
+                            <Row>
+                                <CardSearchList img={Desayunos} title="Breakfast" path="category-breakfast"></CardSearchList>
+                                <CardSearchList img={Pasteleria} title="Cakes" path="category-cakes"></CardSearchList>
+                                <CardSearchList img={Picadas} title="Tapas" path="category-tapas"></CardSearchList>
+                                <CardSearchList img={Bebidas} title="Drinks" path="category-drinks"></CardSearchList>
+                                <CardSearchList img={Flores} title="Flowers" path="category-flowers"></CardSearchList>
+                                <CardSearchList img={Objetos} title="Objects" path="category-objects"></CardSearchList>
+                            </Row>
 
-                        <h2 className='title-search-category'>Search by Chance</h2>
-                        <Row>
-                            <CardSearchList img={Cumpleanos} title="Birthday" path="chance-birthday"></CardSearchList>
-                            <CardSearchList img={Aniversarios} title="Anniversary" path="chance-anniversary"></CardSearchList>
-                            <CardSearchList img={SanValentin} title="Valentine" path="chance-valentine"></CardSearchList>
-                            <CardSearchList img={Bodas} title="Weddings" path="chance-weddings"></CardSearchList>
-                            <CardSearchList img={BabyShower} title="Baby Shower" path="chance-babyshower"></CardSearchList>
-                            <CardSearchList img={Graduaciones} title="Graduation" path="chance-graduation"></CardSearchList>
-                        </Row>
+                            <h2 className='title-search-category'>Search by Chance</h2>
+                            <Row>
+                                <CardSearchList img={Cumpleanos} title="Birthday" path="chance-birthday"></CardSearchList>
+                                <CardSearchList img={Aniversarios} title="Anniversary" path="chance-anniversary"></CardSearchList>
+                                <CardSearchList img={SanValentin} title="Valentine" path="chance-valentine"></CardSearchList>
+                                <CardSearchList img={Bodas} title="Weddings" path="chance-weddings"></CardSearchList>
+                                <CardSearchList img={BabyShower} title="Baby Shower" path="chance-babyshower"></CardSearchList>
+                                <CardSearchList img={Graduaciones} title="Graduation" path="chance-graduation"></CardSearchList>
+                            </Row>
 
-                    </div>
-            }
+                        </div>
+                }
 
 
-
-        </>
+            </div>
+        </Row>
     );
 }
 
