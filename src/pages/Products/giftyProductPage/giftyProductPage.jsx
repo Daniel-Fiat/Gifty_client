@@ -67,28 +67,30 @@ const GiftyProduct = () => {
             "productID": product._id,
             "dedication": order.dedication,
             "deliverDate": order.date,
-            "State": "pendingConfirmation",
+            "State": "pendingPayment",
             "deliveryAddress": adress,
         }
-        OrderApi.newOrder(body)
-        const checkout = {
-            "line_items": [
-                {
-                    "price_data": {
-                        "currency": "usd",
-                        "product_data": {
-                            "name": product.name
-                        },
-                        "unit_amount": product.price * 100
-                    },
-                    "quantity": 1
-                }],
-            "mode": "payment",
-            "success_url": "http://localhost:3000/",
-            "cancel_url": "http://localhost:3000/"
+        OrderApi.newOrder(body).then(res => {
 
-        }
-        StripeAPI.checkout(checkout).then(res => window.location.href = res.url)
+            const checkout = {
+                "line_items": [
+                    {
+                        "price_data": {
+                            "currency": "usd",
+                            "product_data": {
+                                "name": product.name
+                            },
+                            "unit_amount": product.price * 100
+                        },
+                        "quantity": 1
+                    }],
+                "mode": "payment",
+                "success_url": `http://localhost:3000/sucessPayment/${res._id}`,
+                "cancel_url": "http://localhost:3000/"
+
+            }
+            StripeAPI.checkout(checkout).then(res => window.location.href = res.url)
+        })
 
     }
 
