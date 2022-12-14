@@ -13,7 +13,7 @@ const Home = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        ProductAPI.getTopTen().then(products => {
+        ProductAPI.getTopSix().then(products => {
             setProducts(products)
         })
     }, [])
