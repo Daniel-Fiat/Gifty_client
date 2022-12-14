@@ -31,7 +31,6 @@ const CreateProduct = () => {
     const updateNewProduct = (event) => {
         const { name, value } = event.target;
         setProduct({ ...Product, [name]: value });
-        console.log(Product)
     }
 
     return (

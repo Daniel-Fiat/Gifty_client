@@ -24,34 +24,37 @@ import productService from '../../services/product.service';
 
 const Search = () => {
     const [filter, setFilter] = useState();
-    const [value, setValue] = useState([])
+    const [valueState, setValueState] = useState()
     const [offset, setOffset] = useState(0)
 
 
     const filterProducts = (event) => {
         const { value } = event.target;
-        setValue(value)
-        console.log(offset)
+        setValueState(value)
+        setOffset(0);
+        setOffset((state) => {
+            value
+                ?
+                ProductAPI
+                    .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, state)
+                    .then(products => {
+                        setFilter(products)
+                        setOffset(1)
+                    })
+                : setFilter(undefined);
+            return state;
+        });
 
-        value
-            ?
-            ProductAPI
-                .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, offset)
-                .then(products => {
-                    setFilter(products)
-                    setOffset(1)
-                })
-            : setFilter(undefined);
+
     }
 
     const fetchData = () => {
         setOffset(offset + 1)
-        console.log(offset)
+
         ProductAPI
-            .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, offset)
+            .getAllproduct({ name: { $regex: valueState, $options: 'i' } }, 12, offset)
             .then(products => {
                 products.length && setFilter([...filter, ...products])
-                console.log("hola?")
             })
     }
     return (

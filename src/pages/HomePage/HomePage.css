@@ -12,8 +12,8 @@
 #home-title-background {
     position: absolute;
     top: 0;
-    width: 100vw;
-    height: 41px;
+    width: 100%;
+    height: 40px;
     left: 0;
     background-color: var(--color-celeste);
     z-index: -4;
@@ -28,15 +28,15 @@
 
 #navbar-top-center {
     position: absolute;
-    width: 100vw;
-    top: 40px;
+    width: 100%;
+    top: 36px;
     left: 0;
-    z-index: -4;
+    z-index: -5;
 }
 
 #navbar-top-left {
     position: absolute;
-    width: 15.31vw;
+    width: 57.44px;
     top: 30px;
     left: 0;
     z-index: -1;
@@ -44,7 +44,7 @@
 
 #navbar-top-right-top {
     position: absolute;
-    width: 27.32vw;
+    width: 102.5px;
     top: 0;
     right: 0;
     z-index: -3;
@@ -52,7 +52,7 @@
 
 #navbar-top-right-bot {
     position: absolute;
-    width: 12.91vw;
+    width: 48.4px;
     top: 54px;
     right: 0;
     z-index: -2;

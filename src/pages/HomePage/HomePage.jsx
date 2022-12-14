@@ -20,13 +20,13 @@ const Home = () => {
 
     return (
         <>
-            <img id="navbar-top-center" src={navbarTopCenter} alt="NavbarTopCenter" />
             <img id="navbar-top-left" src={navbarTopLeft} alt="NavbarTopLeft" />
             <img id="navbar-top-right-top" src={navbarTopRightTop} alt="NavbarTopRightTop" />
             <img id="navbar-top-right-bot" src={navbarTopRightBot} alt="NavbarTopRightBot" />
             <div id="home-title-background">
                 <h1 id="home-title">Gifty</h1>
             </div>
+            <img id="navbar-top-center" src={navbarTopCenter} alt="NavbarTopCenter" />
             <div id="home-featured">
                 <Row>
                     <h2 id='title-featured'>Featured</h2>

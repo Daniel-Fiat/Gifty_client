@@ -5,11 +5,13 @@ import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
 import OrderApi from '../../../services/order.service'
 import StripeAPI from '../../../services/stripe.services'
+import wishTrue from '../../../assets/Corazon-rojo.png';
+import wishFalse from '../../../assets/Corazon-Blanco.png';
 import { useParams } from 'react-router-dom';
 
 
 const GiftyProduct = () => {
-    const [validateWishList, setwishList] = useState()
+    const [validateWishList, setValidateWishList] = useState()
     const [product, setProduct] = useState({})
     const [order, setOrder] = useState({})
     const [adress, setAdress] = useState({})
@@ -18,10 +20,19 @@ const GiftyProduct = () => {
 
     useEffect(() => {
         ProductAPI.getOneProduct(id)
-            .then(product => {
-                setProduct(product)
+            .then(productRes => {
+                return productRes
             })
-    }, [])
+            .then((productRes) => {
+                setProduct(productRes)
+                if (user) {
+                    UserApi.getOne(user._id).then(userApi => {
+                        const newvalidate = userApi.wishList.includes(productRes._id)
+                        setValidateWishList(newvalidate)
+                    })
+                }
+            })
+    }, [validateWishList])
 
     const updateOrder = (event) => {
         const { name, value } = event.target
@@ -35,25 +46,18 @@ const GiftyProduct = () => {
         console.log(adress)
     }
 
-    useEffect(() => {
-        UserApi.getOne(user?._id).then(userApi => {
-            const newvalidate = userApi.wishList.includes(product._id)
-            setwishList(newvalidate)
-        })
-    }, [user])
-
     const removeWishList = (event) => {
         event.preventDefault()
         UserApi.removeWishList(user._id, id).then()
-        const newvalidate = true
-        setwishList(newvalidate)
+        const newvalidate = false
+        setValidateWishList(newvalidate)
     }
 
     const addWishList = (event) => {
         event.preventDefault()
         UserApi.addWishList(user._id, id).then()
-        const newvalidate = false
-        setwishList(newvalidate)
+        const newvalidate = true
+        setValidateWishList(newvalidate)
     }
 
     const CreateOrder = (event) => {
@@ -94,20 +98,26 @@ const GiftyProduct = () => {
 
     return (
         <div id="ProductCard">
-            <img id="IMGproduct" src={product.imgUrl} alt="esto" />
+            <figure id='figure-imgProduct'>
+                <img id="IMGproduct" src={product.imgUrl} alt="esto" />
+                <figcaption>
+                    {validateWishList ?
+                        (<form onSubmit={removeWishList}>
+                            <button type="submit"><img src={wishTrue} alt={wishTrue}></img></button>
+                        </form>)
+                        :
+                        (<form onSubmit={addWishList}>
+                            <button type="submit"><img src={wishFalse} alt={wishFalse}></img></button>
+                        </form>)
+
+                    }
+                </figcaption>
+            </figure>
             <h1>{product.name}</h1>
             <p>{product.description}</p>
             <span>{`$ ${product.price}`}</span>
             <span>{product.sellerUser?.email}</span>
             <h1>{"⭐".repeat(product.rating)}</h1>
-            {validateWishList ?
-                (<form onSubmit={addWishList}>
-                    <button type="submit">add</button>
-                </form>) :
-                (<form onSubmit={removeWishList}>
-                    <button type="submit">remuv</button>
-                </form>)
-            }
             <form id="formRegalo" onSubmit={CreateOrder}>
                 <label >Escribe tu dedicatoria</label>
                 <textarea
