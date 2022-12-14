@@ -9,8 +9,6 @@ import './Navbar.css';
 function NavBar() {
     const location = useLocation().pathname.toLowerCase();
     const paths = ["/login", "/registerlogin", "/register", "/sucesspayment/", "/cancelpayment/", "/postsucesspayment"];
-    console.log(paths, location)
-
     if (paths.some(path => location.includes(path))) {
         return null
     } else {
