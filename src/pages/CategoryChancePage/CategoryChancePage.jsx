@@ -9,13 +9,14 @@ import CardProductSearchList from '../../components/CardProductSearchList/CardPr
 import capitalize from '../../utils/capitalize';
 import filterIcon from '../../assets/filter-icon.png';
 import orderIcon from '../../assets/order-icon.png';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const CategoryChance = () => {
     const { type } = useParams();
     const categoryChanceTypeApi = type.split("-")[0];
     const categoryChanceType = type.split("-")[1];
 
-    const [productState, setProductState] = useState();
+    const [offset, setOffset] = useState(0)
     const [filter, setFilter] = useState();
 
     const [selectedOption, setSelectedOption] = useState();
@@ -33,9 +34,11 @@ const CategoryChance = () => {
 
     useEffect(() => {
         ProductAPI
-            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType } : { chance: categoryChanceType }, 12)
+            .getAllproduct(categoryChanceTypeApi === "category" ? { category: categoryChanceType } : { chance: categoryChanceType }, 12, offset)
             .then(products => {
-                setProductState(products)
+                setFilter(products)
+                setOffset(1)
+
             })
     }, [])
 
@@ -96,6 +99,9 @@ const CategoryChance = () => {
         filterClose();
 
     }
+    const fetchData = () => {
+
+    }
 
     return (
         <>
@@ -107,7 +113,7 @@ const CategoryChance = () => {
                 placeholder='Search'>
             </input>
             {
-                productState &&
+                filter &&
                 <>
                     <div id="category-chance-links">
                         <div>
@@ -123,16 +129,23 @@ const CategoryChance = () => {
                             </Link>
                         </div>
                     </div>
-                    <Row>
-                        {
-                            filter
-                                ?
-                                filter.map(filter => <CardProductSearchList key={filter._id} product={filter}></CardProductSearchList>)
-                                :
-                                productState.map(product => <CardProductSearchList key={product._id} product={product}></CardProductSearchList>)
-                        }
-                    </Row>
+                    <InfiniteScroll
+                        dataLength={filter.length} //This is important field to render the next data
+                        next={fetchData}
+                        hasMore={true}
+                        endMessage={
+                            <p style={{ textAlign: 'center' }}>
+                                <b>Yay! You have seen it all</b>
+                            </p>
+                        }>
+                        <Row>
+                            {
 
+                                filter.map(filter => <CardProductSearchList key={filter._id} product={filter}></CardProductSearchList>)
+
+                            }
+                        </Row>
+                    </InfiniteScroll>
                     <Modal show={showOrder} onHide={orderClose}>
                         <Modal.Header id="header-filter" closeButton><h1>Order by</h1></Modal.Header>
                         <Modal.Body>
