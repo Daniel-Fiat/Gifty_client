@@ -21,23 +21,19 @@ import CardProductSearchList from '../../components/CardProductSearchList/CardPr
 
 
 const Search = () => {
-    const [products, setProducts] = useState([]);
     const [filter, setFilter] = useState();
-
-
-    useEffect(() => {
-        ProductAPI.getAllproduct().then(products => {
-            setProducts(products)
-        })
-    }, [])
 
     const filterProducts = (event) => {
         const { value } = event.target;
-        let _products = [...products];
 
-        _products = _products.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
-
-        value ? setFilter(_products) : setFilter(undefined)
+        value
+            ?
+            ProductAPI
+                .getAllproduct({ name: { $regex: value, $options: 'i' } }, 20, 0)
+                .then(products => {
+                    setFilter(products)
+                })
+            : setFilter(undefined);
     }
 
     return (

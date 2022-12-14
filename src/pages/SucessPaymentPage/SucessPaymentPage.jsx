@@ -7,12 +7,17 @@ import OrderApi from '../../services/order.service'
 import './SucessPaymentPage.css';
 import { Row } from 'react-bootstrap';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SucessPayment = () => {
-    const { id } = useParams()
+    const { id } = useParams();
+    const navigate = useNavigate();
+
     useEffect(() => {
-        OrderApi.updateState(id, "pendingConfirmation")
+        OrderApi.updateState(id, "pendingConfirmation");
+        setTimeout(() => {
+            navigate("/postSucessPayment");
+        }, 3000);
     })
     return (
         <Row>
