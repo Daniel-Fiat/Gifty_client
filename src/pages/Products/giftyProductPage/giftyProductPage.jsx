@@ -117,17 +117,17 @@ const GiftyProduct = () => {
                     onChange={updateOrder}
                 ></textarea>
                 <label >Fecha y Hora</label>
-                <input onChange={updateAdress} type="date" name="date" id="" onChange={updateOrder} />
+                <input onChange={updateAdress} type="date" name="date" />
                 <label >Calle</label>
-                <input onChange={updateAdress} type="text" name="street" id="" />
+                <input onChange={updateAdress} type="text" name="street" />
                 <label >Numero</label>
-                <input onChange={updateAdress} type="text" name="number" id="" />
+                <input onChange={updateAdress} type="text" name="number" />
                 <label >Piso</label>
-                <input onChange={updateAdress} type="text" name="floor" id="" />
+                <input onChange={updateAdress} type="text" name="floor" />
                 <label >Puerta</label>
-                <input onChange={updateAdress} type="text" name="door" id="" />
+                <input onChange={updateAdress} type="text" name="door" />
                 <label >Ciudad</label>
-                <input onChange={updateAdress} type="text" name="city" id="" />
+                <input onChange={updateAdress} type="text" name="city" />
                 <button type="submit">CreateProduct</button>
             </form>
         </div>
