@@ -5,9 +5,8 @@ import { AuthContext } from '../../../context/auth.context';
 import CardMyGiftsList from '../../../components/CardMyGiftsList/CardMyGiftsList';
 
 const Mygifts = () => {
-    const { user } = useContext(AuthContext)
-    const [orders, setOrders] = useState([])
-
+    const { user } = useContext(AuthContext);
+    const [orders, setOrders] = useState([]);
     useEffect(() => {
         OrderAPI.getByClient(user._id).then(orders => {
             setOrders(orders)
@@ -19,6 +18,7 @@ const Mygifts = () => {
         <>
             <h1>Mygiftys</h1>
             {
+                orders.length > 0 &&
                 orders.map(order => {
                     return (
                         <>
