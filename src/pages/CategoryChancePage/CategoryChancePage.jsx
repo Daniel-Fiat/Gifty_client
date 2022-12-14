@@ -17,8 +17,8 @@ const CategoryChance = () => {
     const categoryChanceType = type.split("-")[1];
 
 
-    const [offset, setOffset] = useState(1)
-    const [filter, setFilter] = useState()
+    const [offset, setOffset] = useState(4)
+    const [filter, setFilter] = useState([])
     const [sort, setSort] = useState()
     const [valueSearch, setvalueSearch] = useState("")
 
@@ -28,7 +28,7 @@ const CategoryChance = () => {
 
     const [showOrder, setShowOrder] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
-
+    const LIMIT = 12
     const orderClose = () => setShowOrder(false)
     const orderShow = () => { setShowOrder(true) }
 
@@ -37,21 +37,21 @@ const CategoryChance = () => {
 
     useEffect(() => {
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType }, 6)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType }, LIMIT)
             .then(products => {
                 setFilter(products)
-                setOffset(1)
+                setOffset(4)
             })
     }, [])
 
     const filterProductsSearch = (event) => {
         const { value } = event.target;
         setvalueSearch(value)
-        setOffset(1)
+        setOffset(4)
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: value, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, 6, {}, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: value, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, sort)
             .then(products => {
-                setFilter([...products])
+                setFilter(products)
             })
     }
 
@@ -59,12 +59,16 @@ const CategoryChance = () => {
         const { value } = event.target;
         let thissort;
         setSelectedOption(value);
-        setOffset(1)
-        if (value === "lower-higher-price") { setSort({ price: 1 }); thissort = { price: 1 } } else if (value === "higher-lower-price") { setSort({ price: -1 }); thissort = { price: -1 } } else { setSort({ rating: -1 }); thissort = { rating: -1 } }
+        setOffset(4)
+
+        if (value === "lower-higher-price") { setSort({ price: 1, createdAt: 1 }); thissort = { price: 1, createdAt: 1 } }
+        else if (value === "higher-lower-price") { setSort({ price: -1, createdAt: 1 }); thissort = { price: -1, createdAt: 1 } }
+        else { setSort({ rating: -1, createdAt: 1 }); thissort = { rating: -1, createdAt: 1 } }
+
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, 6, {}, thissort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, thissort)
             .then(products => {
-                setFilter([...products])
+                setFilter(products)
 
             })
 
@@ -79,11 +83,11 @@ const CategoryChance = () => {
 
     const filterProducts = (e) => {
         e.preventDefault();
-        setOffset(1)
+        setOffset(4)
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, 6, {}, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, sort)
             .then(products => {
-                setFilter([...products])
+                setFilter(products)
             })
 
         filterClose();
@@ -96,7 +100,6 @@ const CategoryChance = () => {
                 console.log(products)
                 setFilter([...filter, ...products])
                 setOffset(offset + 1)
-
             })
     }
 
