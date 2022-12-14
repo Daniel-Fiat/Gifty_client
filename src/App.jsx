@@ -23,6 +23,7 @@ import CancelPayment from './pages/CancelPaymentPage/CancelPaymentPage';
 
 import { Container } from 'react-bootstrap';
 import IsPrivate from './components/Routes/IsPrivate';
+import PostSucessPayment from './pages/PostSucessPayment/PostSucessPayment';
 // windows.location?
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/sucessPayment/:id' element={<IsPrivate> <SucessPayment /> </IsPrivate>} />
           <Route path='/cancelPayment/:id' element={<IsPrivate> <CancelPayment /> </IsPrivate>} />
+          <Route path='/postSucessPayment' element={<IsPrivate> <PostSucessPayment /> </IsPrivate>} />
 
           <Route path='/' element={<Home />} />
           <Route path='/search' element={<Search />} />
