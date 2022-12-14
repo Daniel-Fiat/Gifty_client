@@ -18,24 +18,42 @@ import Bodas from '../../assets/OcasionImages/Bodas.png';
 import BabyShower from '../../assets/OcasionImages/BabyShower.png';
 import Graduaciones from '../../assets/OcasionImages/Graduaciones.png';
 import CardProductSearchList from '../../components/CardProductSearchList/CardProductSearchList';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import productService from '../../services/product.service';
 
 
 const Search = () => {
     const [filter, setFilter] = useState();
+    const [value, setValue] = useState([])
+    const [offset, setOffset] = useState(0)
+
 
     const filterProducts = (event) => {
         const { value } = event.target;
+        setValue(value)
+        console.log(offset)
 
         value
             ?
             ProductAPI
-                .getAllproduct({ name: { $regex: value, $options: 'i' } }, 20, 0)
+                .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, offset)
                 .then(products => {
                     setFilter(products)
+                    setOffset(1)
                 })
             : setFilter(undefined);
     }
 
+    const fetchData = () => {
+        setOffset(offset + 1)
+        console.log(offset)
+        ProductAPI
+            .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, offset)
+            .then(products => {
+                products.length && setFilter([...filter, ...products])
+                console.log("hola?")
+            })
+    }
     return (
         <Row>
             <div>
@@ -50,10 +68,21 @@ const Search = () => {
                 {
                     filter
                         ?
-                        <Row>{
-                            filter.map(filter => <CardProductSearchList product={filter}></CardProductSearchList>)
-                        }
-                        </Row>
+                        <InfiniteScroll
+                            dataLength={filter.length} //This is important field to render the next data
+                            next={fetchData}
+                            hasMore={true}
+                            endMessage={
+                                <p style={{ textAlign: 'center' }}>
+                                    <b>Yay! You have seen it all</b>
+                                </p>
+                            }>
+                            <Row>
+                                {
+                                    filter.map(filter => <CardProductSearchList product={filter}></CardProductSearchList>)
+                                }
+                            </Row>
+                        </InfiniteScroll>
                         :
                         <div>
                             <h2 className='title-search-category'>Search by Category</h2>

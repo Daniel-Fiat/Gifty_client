@@ -24,6 +24,7 @@ const Register = () => {
         ProductApi.updateProduct(UpdateProduct, Product._id)
             .then(navigate('/user/catalog'))
     }
+
     const updateNewProductState = (event) => {
         const { name, value } = event.target
         setProduct({ ...Product, [name]: value });
@@ -31,13 +32,12 @@ const Register = () => {
         console.log(UpdateProduct)
         console.log(Product)
     }
+
     const deleteProduct = (event) => {
         event.preventDefault()
         ProductApi.deleteOneProduct(Product._id)
             .then(navigate('/user/catalog'))
     }
-
-
 
     return (
         <div className='Newproduct-form-container'>
