@@ -15,7 +15,7 @@ const CategoryChance = () => {
     const { type } = useParams();
     const categoryChanceTypeApi = type.split("-")[0];
     const categoryChanceType = type.split("-")[1];
-
+    const AgeRange = ["babyboomers", 'generaciónX', 'millennials', 'generaciónZ', 'Alpha'];
 
     const [offset, setOffset] = useState(4)
     const [filter, setFilter] = useState([])
@@ -25,6 +25,7 @@ const CategoryChance = () => {
     const [selectedOption, setSelectedOption] = useState()
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(2500)
+    const [ageState, setAgeState] = useState();
 
     const [showOrder, setShowOrder] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
@@ -80,12 +81,16 @@ const CategoryChance = () => {
         setMinPrice(min);
         setMaxPrice(max);
     }
+    const updateAgeRange = (e) => {
+        const age = e;
+        setAgeState(age);
 
+    }
     const filterProducts = (e) => {
         e.preventDefault();
         setOffset(4)
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: { $in: AgeRange } }, LIMIT, 0, sort)
             .then(products => {
                 setFilter(products)
             })
@@ -168,7 +173,7 @@ const CategoryChance = () => {
                             {
                                 <>
                                     <form onSubmit={filterProducts}>
-                                        <p>Range price</p>
+                                        <p>Price range</p>
                                         <MultiRangeSlider
                                             name="range-price"
                                             min={0}
@@ -177,6 +182,14 @@ const CategoryChance = () => {
                                             max={2500}
                                             onChange={updatePrice}
                                         />
+                                        <p>Age range</p>
+                                        <select name="select" onChange={updateAgeRange}>
+                                            {
+                                                AgeRange.map((age) => {
+                                                    return (<option value={age}>{age}</option>);
+                                                })
+                                            }
+                                        </select>
                                         <button type='submit'>Apply filters</button>
                                     </form>
                                 </>
