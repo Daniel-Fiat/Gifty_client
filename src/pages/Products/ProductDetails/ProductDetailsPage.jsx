@@ -62,7 +62,7 @@ const ProductDetail = () => {
         <>
             {
 
-                (<div id="ProductCard">
+                <div id="ProductCard">
                     <h1 id="titleCard">{product.name}</h1>
                     <figure id='figure-imgProduct'>
                         <img id="IMGproduct" src={product.imgUrl} alt="esto" />
@@ -82,7 +82,7 @@ const ProductDetail = () => {
                     <p id='DetailsProduct' >{product.description}</p>
                     <h1><img id="StartRating" src={startRanting} alt="" />{product.rating}</h1>
                     <span id='PriceSpan'>{`${product.price} €`}</span>
-                </div>)
+                </div>
 
             }
             <div id='Gift-boton'>
