@@ -34,6 +34,18 @@ const Register = () => {
             .then(navigate('/user/catalog'))
     }
 
+    const handleFileUpload = (e) => {
+        const uploadData = new FormData();
+        uploadData.append("imageUrl", e.target.files[0]);
+        ProductApi
+            .uploadImage(uploadData)
+            .then(response => {
+                console.log("response is:" + response.fileUrl)
+                setUpdateProduct({ ...UpdateProduct, imgUrl: response.fileUrl })
+            })
+            .catch(err => console.log("Error while uploading the file: ", err));
+    };
+
     const updateNewProductState = (event) => {
         const { name, value } = event.target
         setProduct({ ...Product, [name]: value });
@@ -60,13 +72,7 @@ const Register = () => {
                         value={Product.name}>
                     </input>
                     <label htmlFor="">Image</label>
-                    <input className='editproductInput'
-                        onChange={updateNewProductState}
-                        type='text'
-                        name='imgUrl'
-                        placeholder='imgUrl'
-                        value={Product.imgUrl}>
-                    </input>
+                    <input className='editproductInput' type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
                     <label htmlFor="">Description</label>
                     <input className='editproductInput'
                         onChange={updateNewProductState}

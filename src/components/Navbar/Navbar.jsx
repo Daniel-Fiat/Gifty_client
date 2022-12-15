@@ -2,8 +2,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation } from 'react-router-dom';
 import homelogo from '../../assets/Boton1.png';
 import lupa from '../../assets/lupa.png';
-import burger from '../../assets/burger.png';
-import notification from '../../assets/notificacion.png';
+import profile from '../../assets/perfil.png';
+import gift from '../../assets/regalos.png';
 import './Navbar.css';
 
 function NavBar() {
@@ -29,16 +29,16 @@ function NavBar() {
                         <span>Search</span>
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/'>
-                            <img src={notification} alt="" />
+                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/user/mygifts'>
+                            <img src={gift} alt="" />
                         </Link>
-                        <span>Notifications</span>
+                        <span>MyGiftys</span>
                     </div>
                     <div className="d-flex flex-column align-items-center">
                         <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/menu'>
-                            <img src={burger} alt="" />
+                            <img src={profile} alt="" />
                         </Link>
-                        <span>Menu</span>
+                        <span>Profile</span>
                     </div>
                 </ Navbar>
                 <div className='margin-bottom-app'></div>
