@@ -9,14 +9,22 @@ const Register = () => {
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
     const [UpdateProduct, setUpdateProduct] = useState(Product)
+    const [chanceState, setChance] = useState(undefined)
+    const [categoryState, setCategory] = useState(undefined)
 
     const { id } = useParams()
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        console.log(id)
+
         ProductApi.getOneProduct(id)
-            .then(product => setProduct(product))
+            .then(product => {
+                setProduct(product)
+                setCategory(product.category[0])
+                setChance(product.chance[0])
+            })
+
+
     }, [])
 
     const updateNewProduct = (event) => {
@@ -30,8 +38,6 @@ const Register = () => {
         const { name, value } = event.target
         setProduct({ ...Product, [name]: value });
         setUpdateProduct({ ...UpdateProduct, [name]: value });
-        console.log(UpdateProduct)
-        console.log(Product)
     }
 
     const deleteProduct = (event) => {
@@ -73,24 +79,27 @@ const Register = () => {
                         placeholder='price'
                         value={Product.price}>
                     </input>
-                    <label htmlFor="">category</label>
-                    <select onChange={updateNewProduct} name="category" id="categorySelect">
-                        <option value=""></option>
-                        <option value="breakfast">breakfast</option>
-                        <option value="cakes">cakes</option>
-                        <option value="tapas">tapas</option>
-                        <option value="flowers">flowers</option>
-                        <option value="drinks">drinks</option>
-                        <option value="objects">objects</option>
-                    </select> <br />
-                    <label htmlFor="">chance</label>
-                    <select onChange={updateNewProduct} name="chance" id="categorySelect">
-                        <option value=""></option>
-                        <option value="birthday">birthday</option>
-                        <option value="anniversary">anniversary</option>
-                        <option value="Valentine">Valentine</option>
-                        <option value="graduation">graduation</option>
-                    </select>
+                    {///
+                        Product &&
+                        <>
+                            <label htmlFor="">category</label>
+                            <select onChange={updateNewProductState} name="category" id="categorySelect">
+                                <option value="breakfast" selected={categoryState === "breakfast"}>breakfast</option>
+                                <option value="cakes" selected={categoryState === "cakes"}>cakes</option>
+                                <option value="tapas" selected={categoryState === "tapas"}>tapas</option>
+                                <option value="flowers" selected={categoryState === "flowers"}>flowers</option>
+                                <option value="drinks" selected={categoryState === "drinks"}>drinks</option>
+                                <option value="objects" selected={categoryState === "objects"}>objects</option>
+                            </select> <br />
+                            <label htmlFor="">chance</label>
+                            <select onChange={updateNewProductState} name="chance" id="categorySelect">
+                                <option value="birthday" selected={chanceState === "birthday"}>birthday</option>
+                                <option value="anniversary" selected={chanceState === "anniversary"}>anniversary</option>
+                                <option value="Valentine" selected={chanceState === "Valentine"}>Valentine</option>
+                                <option value="graduation" selected={chanceState === "graduation"}>graduation</option>
+                            </select>
+                        </>
+                    }
                     <button type="submit" id="registerBoton">Update Product</button>
                 </form>
                 <form onSubmit={deleteProduct}>
