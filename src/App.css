@@ -58,3 +58,17 @@
 .infinite-scroll-component {
   overflow: hidden !important;
 }
+
+.BotonRed {
+  border: 1px solid;
+  border-radius: 15px;
+  border-color: var(--color-red);
+  background-color: var(--color-red);
+  color: white;
+  width: 70%;
+  margin: .5rem;
+  padding: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: .5rem 1rem;
+}
