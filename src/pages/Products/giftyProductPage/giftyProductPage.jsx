@@ -128,6 +128,7 @@ const GiftyProduct = () => {
                         <Accordion.Header>Escribe tu dedicatoria</Accordion.Header>
                         <Accordion.Body>
                             <textarea
+                                id="TextareaDedicat"
                                 name="dedication"
                                 rows="4"
                                 cols="40"
