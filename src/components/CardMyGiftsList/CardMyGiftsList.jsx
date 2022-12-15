@@ -41,9 +41,15 @@ const CardCatalogList = ({ order }) => {
                         </Card.Text>
                         {order.State === "delivered" &&
                             <form onSubmit={createReview}>
-                                <input onChange={updateReview} type="number" name="rating" id="rating" />
-                                <textarea onChange={updateReview} name="comment" id="comment" cols="30" rows="10"></textarea>
-                                <Button type="submit">Pedido Entregado</Button>
+                                <select onChange={updateReview} name="rating" id="rating" >
+                                    <option value={1}>⭐</option>
+                                    <option value={2}>⭐⭐</option>
+                                    <option value={3}>⭐⭐⭐</option>
+                                    <option value={4}>⭐⭐⭐⭐</option>
+                                    <option value={5}>⭐⭐⭐⭐⭐</option>
+                                </select>
+                                <textarea id="textareaComent" onChange={updateReview} name="comment" cols="30" rows="3"></textarea>
+                                <Button type="submit">Review</Button>
                             </form>
                         }
                     </Card.Body>
