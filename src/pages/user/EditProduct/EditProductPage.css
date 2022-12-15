@@ -1,38 +1,52 @@
 .updateproduct-form-container {
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 65.425px);
-    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 53.9px);
+    margin-top: 12px;
+}
+
+#Updateproduct-form-container {
+    width: 80%;
+    background-color: var(--color-celeste);
+    padding: 2rem;
+    border-radius: 10px;
 }
 
 #Updateproduct-form {
-    background-color: var(--color-celeste);
-    width: 80%;
-    padding: 2rem;
-    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#Updateproduct-form label {
+    width: 90%;
+}
+
+.updateproduct-form-container h1 {
+    text-align: center;
+    color: var(--color-red);
+    font-weight: bold;
 }
 
 #msgred {
     color: red;
 }
 
-#register-form form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.NewproductInput {
+.editproductInput {
     border: 1px solid;
     border-radius: 15px;
     border-color: var(--color-blue);
     width: 90%;
-    margin: .5rem;
+    margin-bottom: .5rem;
     padding: 7px;
     font-size: .8rem;
 }
 
-.NewproductInput:focus {
+.editproductInput:focus {
     outline: none;
     border: 1.5px solid;
     border-color: red;

@@ -15,17 +15,17 @@ const CardMyShop = ({ order }) => {
         OrderAPI.updateState(order._id, "delivered")
     }
     return (
-        <Row xs={1} md={2} className="g-4" >
+        <Row xs={1} md={2} className="cardmyshop g-4">
             <Col>
-                <Card >
-                    <Card.Img variant="top" src={order.productID.imgUrl} />
+                <Card>
+                    <Card.Img id="img-card-myshop" variant="top" src={order.productID.imgUrl} />
                     <Card.Body>
                         <Card.Title>{order.productID.name}</Card.Title>
-                        <Card.Title>{order.price}</Card.Title>
-                        <Card.Title>{order.clientUser.email}</Card.Title>
-                        <Card.Title>{order.deliverDate}</Card.Title>
-                        <Card.Title>{order.State}</Card.Title>
-                        <Card.Text>{order.dedication}</Card.Text>
+                        <Card.Title>Price: {order.price}€</Card.Title>
+                        <Card.Title>Buyer: {order.clientUser.email}</Card.Title>
+                        <Card.Title>Deliver Date: {order.deliverDate}</Card.Title>
+                        <Card.Title>State: {order.State}</Card.Title>
+                        <Card.Text>Message: {order.dedication}</Card.Text>
                         {order.State === "pendingConfirmation" &&
                             <>
                                 <form onSubmit={acceptedOrder}>

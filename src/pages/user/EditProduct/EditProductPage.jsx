@@ -48,31 +48,35 @@ const Register = () => {
 
     return (
         <Row className='updateproduct-form-container'>
-            <div id="Updateproduct-form">
+            <div id="Updateproduct-form-container">
                 <h1>Update Product</h1>
-                <form onSubmit={updateNewProduct} >
-                    <input className='NewproductInput'
+                <form id="Updateproduct-form" onSubmit={updateNewProduct} >
+                    <label htmlFor="">Name</label>
+                    <input className='editproductInput'
                         onChange={updateNewProductState}
                         type='text'
                         name='name'
                         placeholder='name'
                         value={Product.name}>
                     </input>
-                    <input className='NewproductInput'
+                    <label htmlFor="">Image</label>
+                    <input className='editproductInput'
                         onChange={updateNewProductState}
                         type='text'
                         name='imgUrl'
                         placeholder='imgUrl'
                         value={Product.imgUrl}>
                     </input>
-                    <input className='NewproductInput'
+                    <label htmlFor="">Description</label>
+                    <input className='editproductInput'
                         onChange={updateNewProductState}
                         type='text'
                         name='description'
                         placeholder='description'
                         value={Product.description}>
                     </input>
-                    <input className='NewproductInput'
+                    <label htmlFor="">Price</label>
+                    <input className='editproductInput'
                         onChange={updateNewProductState}
                         type='text'
                         name='price'
@@ -83,7 +87,7 @@ const Register = () => {
                         Product &&
                         <>
                             <label htmlFor="">category</label>
-                            <select onChange={updateNewProductState} name="category" id="categorySelect">
+                            <select onChange={updateNewProductState} name="category" className="editproductInput">
                                 <option value="breakfast" selected={categoryState === "breakfast"}>breakfast</option>
                                 <option value="cakes" selected={categoryState === "cakes"}>cakes</option>
                                 <option value="tapas" selected={categoryState === "tapas"}>tapas</option>
@@ -92,7 +96,7 @@ const Register = () => {
                                 <option value="objects" selected={categoryState === "objects"}>objects</option>
                             </select> <br />
                             <label htmlFor="">chance</label>
-                            <select onChange={updateNewProductState} name="chance" id="categorySelect">
+                            <select onChange={updateNewProductState} name="chance" className="editproductInput">
                                 <option value="birthday" selected={chanceState === "birthday"}>birthday</option>
                                 <option value="anniversary" selected={chanceState === "anniversary"}>anniversary</option>
                                 <option value="Valentine" selected={chanceState === "Valentine"}>Valentine</option>
@@ -102,7 +106,7 @@ const Register = () => {
                     }
                     <button type="submit" id="registerBoton">Update Product</button>
                 </form>
-                <form onSubmit={deleteProduct}>
+                <form id="Updateproduct-form" onSubmit={deleteProduct}>
                     <button type="submit" id="registerBoton">Delete Product</button>
                 </form>
             </div>

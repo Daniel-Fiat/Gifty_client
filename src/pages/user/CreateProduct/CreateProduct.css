@@ -1,9 +1,9 @@
 .Newproduct-form-container {
-    width: 100vw;
-    height: 100vh;
+    min-height: calc(100vh - 53.9px);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 12px;
 }
 
 #Newproduct-form {
@@ -11,6 +11,24 @@
     width: 80%;
     padding: 2rem;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#Newproduct-form h1 {
+    color: var(--color-red);
+    font-weight: bold;
+}
+
+#Newproduct-form form {
+    text-align: center;
+}
+
+#Newproduct-form label {
+    width: 90%;
+    text-align: left;
 }
 
 #msgred {
@@ -28,7 +46,7 @@
     border-radius: 15px;
     border-color: var(--color-blue);
     width: 90%;
-    margin: .5rem;
+    margin-bottom: .5rem;
     padding: 7px;
     font-size: .8rem;
 }

@@ -25,8 +25,8 @@ const CardCatalogList = ({ order }) => {
     return (
         <Row xs={1} md={2} className="g-4">
             <Col>
-                <Card>
-                    <Card.Img variant="top" src={order.productID.imgUrl} />
+                <Card id="card-mygift">
+                    <Card.Img id="img-card-mygift" variant="top" src={order.productID.imgUrl} />
                     <Card.Body>
                         <Card.Title>{order.productID.name}</Card.Title>
                         <Card.Title>{order.price}</Card.Title>
