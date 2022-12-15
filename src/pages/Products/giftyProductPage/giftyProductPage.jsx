@@ -8,6 +8,8 @@ import StripeAPI from '../../../services/stripe.services'
 import wishTrue from '../../../assets/Corazon-rojo.png';
 import wishFalse from '../../../assets/Corazon-Blanco.png';
 import { useParams } from 'react-router-dom';
+import startRanting from '../../../assets/StarRating.png';
+import { Accordion } from 'react-bootstrap';
 
 
 const GiftyProduct = () => {
@@ -99,47 +101,65 @@ const GiftyProduct = () => {
 
     return (
         <div id="ProductCard">
-            <figure id='figure-imgProduct'>
-                <img id="IMGproduct" src={product.imgUrl} alt="esto" />
-                <figcaption>
-                    {validateWishList ?
-                        (<form onSubmit={removeWishList}>
-                            <button type="submit"><img src={wishTrue} alt={wishTrue}></img></button>
-                        </form>)
-                        :
-                        (<form onSubmit={addWishList}>
-                            <button type="submit"><img src={wishFalse} alt={wishFalse}></img></button>
-                        </form>)
+            <div>
+                <h1 id="titleCard">Your Gift</h1>
+                <figure id='figure-imgProduct'>
+                    <img id="IMGproduct" src={product.imgUrl} alt="esto" />
+                    <figcaption>
+                        {validateWishList ?
+                            (<form onSubmit={removeWishList}>
+                                <button type="submit"><img src={wishTrue} alt={wishTrue}></img></button>
+                            </form>)
+                            :
+                            (<form onSubmit={addWishList}>
+                                <button type="submit"><img src={wishFalse} alt={wishFalse}></img></button>
+                            </form>)
 
-                    }
-                </figcaption>
-            </figure>
-            <h1>{product.name}</h1>
-            <p>{product.description}</p>
-            <span>{`$ ${product.price}`}</span>
-            <span>{product.sellerUser?.email}</span>
-            <h1>{"⭐".repeat(product.rating)}</h1>
+                        }
+                    </figcaption>
+                </figure>
+                <p id='DetailsProduct' >{product.name}</p>
+                <span id='PriceSpan'>{`${product.price} €`}</span>
+            </div>
             <form id="formRegalo" onSubmit={CreateOrder}>
-                <label >Escribe tu dedicatoria</label>
-                <textarea
-                    name="dedication"
-                    rows="4"
-                    cols="40"
-                    onChange={updateOrder}
-                ></textarea>
-                <label >Fecha y Hora</label>
-                <input onChange={updateOrder} type="date" name="date" />
-                <label >Calle</label>
-                <input onChange={updateAdress} type="text" name="street" />
-                <label >Numero</label>
-                <input onChange={updateAdress} type="text" name="number" />
-                <label >Piso</label>
-                <input onChange={updateAdress} type="text" name="floor" />
-                <label >Puerta</label>
-                <input onChange={updateAdress} type="text" name="door" />
-                <label >Ciudad</label>
-                <input onChange={updateAdress} type="text" name="city" />
-                <button type="submit">CreateProduct</button>
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header>Escribe tu dedicatoria</Accordion.Header>
+                        <Accordion.Body>
+                            <textarea
+                                name="dedication"
+                                rows="4"
+                                cols="40"
+                                onChange={updateOrder}
+                            ></textarea>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                        <Accordion.Header>Fecha y Hora</Accordion.Header>
+                        <Accordion.Body>
+                            <input onChange={updateOrder} type="date" name="date" />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="2">
+                        <Accordion.Header>Direccion</Accordion.Header>
+                        <Accordion.Body>
+                            <label >Calle</label>
+                            <input onChange={updateAdress} type="text" name="street" />
+
+                            <label >Numero</label>
+                            <input onChange={updateAdress} type="text" name="number" />
+                            <label >Piso</label>
+                            <input onChange={updateAdress} type="text" name="floor" />
+                            <label >Puerta</label>
+                            <input onChange={updateAdress} type="text" name="door" />
+                            <label >Ciudad</label>
+                            <input onChange={updateAdress} type="text" name="city" />
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+
+
+                <button type="submit">Create Order</button>
             </form>
         </div>
     );

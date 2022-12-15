@@ -68,7 +68,7 @@
 }
 
 #StartRating {
-    height: 22px;
+    height: 15px;
     margin-bottom: 8px;
 }
 
@@ -80,11 +80,10 @@
 
 #DetailsProduct {
     color: #4F59BA;
-    font-size: .9rem;
 }
 
 #PriceSpan {
-    font-size: 40px;
+    font-size: 25px;
     color: #4F59BA;
     font-weight: bolder;
 }
