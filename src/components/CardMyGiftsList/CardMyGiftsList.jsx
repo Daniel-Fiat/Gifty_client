@@ -16,12 +16,11 @@ const CardCatalogList = ({ order }) => {
         setReview({ ...review, [name]: value })
     }
     const createReview = (event) => {
-        event.preventDefault()
+
         review.userId = order.clientUser._id
         review.product_id = order.productID._id
         ReviewAPI.newReview(review)
         OrderAPI.updateState(order._id, "review").then(
-            navigate('/user/mygifts')
 
         )
     }
