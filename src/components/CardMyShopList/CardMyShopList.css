@@ -1,0 +1,28 @@
+#card-myshop {
+    margin-bottom: 10px;
+}
+
+.cardmyshop form {
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.cardmyshop button {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    margin: 0.5rem;
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+#img-card-myshop {
+    height: 200px;
+    object-fit: cover;
+}

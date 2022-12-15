@@ -37,13 +37,13 @@ const GiftyProduct = () => {
     const updateOrder = (event) => {
         const { name, value } = event.target
         setOrder({ ...order, [name]: value })
-        console.log(product.sellerUser._id)
+
     }
 
     const updateAdress = (event) => {
         const { name, value } = event.target
         setAdress({ ...adress, [name]: value })
-        console.log(adress)
+
     }
 
     const removeWishList = (event) => {
@@ -62,13 +62,14 @@ const GiftyProduct = () => {
 
     const CreateOrder = (event) => {
         event.preventDefault()
+
         const body = {
             "price": product.price,
             "sellerUser": product.sellerUser._id,
             "clientUser": user._id,
             "productID": product._id,
             "dedication": order.dedication,
-            "deliverDate": order.date,
+            "deliverDate": `${order.date}`,
             "State": "pendingPayment",
             "deliveryAddress": adress,
         }
@@ -127,7 +128,7 @@ const GiftyProduct = () => {
                     onChange={updateOrder}
                 ></textarea>
                 <label >Fecha y Hora</label>
-                <input onChange={updateAdress} type="date" name="date" />
+                <input onChange={updateOrder} type="date" name="date" />
                 <label >Calle</label>
                 <input onChange={updateAdress} type="text" name="street" />
                 <label >Numero</label>

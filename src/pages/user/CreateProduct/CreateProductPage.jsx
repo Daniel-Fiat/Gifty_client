@@ -3,6 +3,7 @@ import ProductApi from '../../../services/product.service'
 import { useState, useEffect, useContext } from 'react';
 import { Form, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
+import { Row } from 'react-bootstrap';
 
 const CreateProduct = () => {
     const { user } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const CreateProduct = () => {
     }
 
     return (
-        <div className='Newproduct-form-container'>
+        <Row className='Newproduct-form-container'>
             <div id="Newproduct-form">
                 <h1>New Product</h1>
                 <form onSubmit={createNewProduct} >
@@ -45,7 +46,7 @@ const CreateProduct = () => {
                         placeholder='name'>
                     </input>
 
-                    <input type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
+                    <input className='NewproductInput' type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
                     <textarea className='NewproductInput'
                         onChange={updateNewProduct}
                         name='description'
@@ -59,8 +60,8 @@ const CreateProduct = () => {
                         name='price'
                         placeholder='price'>
                     </input>
-                    <label htmlFor="">category</label>
-                    <select onChange={updateNewProduct} name="category" id="categorySelect">
+                    <label htmlFor="">Category</label>
+                    <select className='NewproductInput' onChange={updateNewProduct} name="category" id="categorySelect">
                         <option value=""></option>
                         <option value="breakfast">breakfast</option>
                         <option value="cakes">cakes</option>
@@ -69,16 +70,16 @@ const CreateProduct = () => {
                         <option value="drinks">drinks</option>
                         <option value="objects">objects</option>
                     </select> <br />
-                    <label htmlFor="">chance</label>
-                    <select onChange={updateNewProduct} name="chance" id="categorySelect">
+                    <label htmlFor="">Chance</label>
+                    <select className='NewproductInput' onChange={updateNewProduct} name="chance" id="categorySelect">
                         <option value=""></option>
                         <option value="birthday">birthday</option>
                         <option value="anniversary">anniversary</option>
                         <option value="Valentine">Valentine</option>
                         <option value="graduation">graduation</option>
                     </select>
-                    <label htmlFor="">rangeAge</label>
-                    <select onChange={updateNewProduct} name="rangeAge" id="categorySelect">
+                    <label htmlFor="">RangeAge</label>
+                    <select className='NewproductInput' onChange={updateNewProduct} name="rangeAge" id="categorySelect">
                         <option value=""></option>
                         <option value="babyboomers">babyboomers</option>
                         <option value="generaciónX">generaciónX</option>
@@ -89,7 +90,7 @@ const CreateProduct = () => {
                     <button type="submit" id="registerBoton">Create Product</button>
                 </form>
             </div>
-        </div>
+        </Row>
     );
 
 }
