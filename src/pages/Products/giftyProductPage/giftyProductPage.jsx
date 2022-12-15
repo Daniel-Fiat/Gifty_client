@@ -139,29 +139,29 @@ const GiftyProduct = () => {
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Fecha y Hora</Accordion.Header>
                         <Accordion.Body>
-                            <input onChange={updateOrder} type="date" name="date" />
+                            <input id="dateInput" onChange={updateOrder} type="datetime-local" name="date" />
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2">
                         <Accordion.Header>Direccion</Accordion.Header>
                         <Accordion.Body>
-                            <label >Calle</label>
-                            <input onChange={updateAdress} type="text" name="street" />
-
-                            <label >Numero</label>
-                            <input onChange={updateAdress} type="text" name="number" />
-                            <label >Piso</label>
-                            <input onChange={updateAdress} type="text" name="floor" />
-                            <label >Puerta</label>
-                            <input onChange={updateAdress} type="text" name="door" />
-                            <label >Ciudad</label>
-                            <input onChange={updateAdress} type="text" name="city" />
+                            <label className='col-6' >Calle</label>
+                            <input id="FormInput" className='col-6' onChange={updateAdress} type="text" name="street" />
+                            <label className='col-6' >Numero</label>
+                            <input id="FormInput" className='col-6' onChange={updateAdress} type="text" name="number" />
+                            <label className='col-6'>Piso</label>
+                            <input id="FormInput" className='col-6' onChange={updateAdress} type="text" name="floor" />
+                            <label className='col-6'>Puerta</label>
+                            <input id="FormInput" className='col-6' onChange={updateAdress} type="text" name="door" />
+                            <label className='col-6'>Ciudad</label>
+                            <input id="FormInput" className='col-6' onChange={updateAdress} type="text" name="city" />
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
 
-
-                <button type="submit">Create Order</button>
+                <div id="Updateproduct-form" >
+                    <button type="submit" id="registerBoton">Create Order</button>
+                </div>
             </form>
         </div>
     );
