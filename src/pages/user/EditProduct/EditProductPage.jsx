@@ -94,7 +94,7 @@ const Register = () => {
                                 <option value="flowers" selected={categoryState === "flowers"}>flowers</option>
                                 <option value="drinks" selected={categoryState === "drinks"}>drinks</option>
                                 <option value="objects" selected={categoryState === "objects"}>objects</option>
-                            </select> <br />
+                            </select>
                             <label htmlFor="">chance</label>
                             <select onChange={updateNewProductState} name="chance" className="editproductInput">
                                 <option value="birthday" selected={chanceState === "birthday"}>birthday</option>
