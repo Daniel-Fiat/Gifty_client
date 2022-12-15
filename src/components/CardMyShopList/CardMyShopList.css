@@ -26,3 +26,9 @@
     height: 200px;
     object-fit: cover;
 }
+
+@media (min-width: 600px) {
+    #img-card-myshop {
+        height: 400px;
+    }
+}

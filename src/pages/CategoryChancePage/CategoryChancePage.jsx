@@ -25,7 +25,7 @@ const CategoryChance = () => {
     const [selectedOption, setSelectedOption] = useState()
     const [minPrice, setMinPrice] = useState(0)
     const [maxPrice, setMaxPrice] = useState(2500)
-    const [ageState, setAgeState] = useState();
+    const [ageState, setAgeState] = useState(undefined);
 
     const [showOrder, setShowOrder] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
@@ -50,7 +50,7 @@ const CategoryChance = () => {
         setvalueSearch(value)
         setOffset(4)
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: value, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: value, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: ageState }, LIMIT, 0, sort)
             .then(products => {
                 setFilter(products)
             })
@@ -67,7 +67,7 @@ const CategoryChance = () => {
         else { setSort({ rating: -1, createdAt: 1 }); thissort = { rating: -1, createdAt: 1 } }
 
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, LIMIT, 0, thissort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: ageState }, LIMIT, 0, thissort)
             .then(products => {
                 setFilter(products)
 
@@ -82,15 +82,17 @@ const CategoryChance = () => {
         setMaxPrice(max);
     }
     const updateAgeRange = (e) => {
-        const age = e;
-        setAgeState(age);
+        let { value } = e.target;
+        console.log(value);
+        if (value === "") { value = undefined; }
+        setAgeState(value);
 
     }
     const filterProducts = (e) => {
         e.preventDefault();
         setOffset(4)
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: { $in: AgeRange } }, LIMIT, 0, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: ageState }, LIMIT, 0, sort)
             .then(products => {
                 setFilter(products)
             })
@@ -100,7 +102,7 @@ const CategoryChance = () => {
     }
     const fetchData = () => {
         ProductAPI
-            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice } }, 3, offset, sort)
+            .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: ageState }, 3, offset, sort)
             .then(products => {
                 console.log(products)
                 setFilter([...filter, ...products])
@@ -183,14 +185,15 @@ const CategoryChance = () => {
                                             onChange={updatePrice}
                                         />
                                         <p>Age range</p>
-                                        <select name="select" onChange={updateAgeRange}>
+                                        <select id="selectRangeAge" name="select" onChange={updateAgeRange}>
+                                            <option value="" selected={ageState === undefined}>Select a option</option>
                                             {
                                                 AgeRange.map((age) => {
-                                                    return (<option value={age}>{age}</option>);
+                                                    return (<option value={age} selected={ageState === age}>{age}</option>);
                                                 })
                                             }
                                         </select>
-                                        <button type='submit'>Apply filters</button>
+                                        <button id="buttonfilter" type='submit'>Apply filters</button>
                                     </form>
                                 </>
                             }

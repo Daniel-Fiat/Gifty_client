@@ -37,6 +37,7 @@
 #header-order h1 {
     font-size: 24px;
     color: var(--color-red);
+    font-weight: bold;
 }
 
 #filter-modal p {
@@ -48,4 +49,37 @@
     color: var(--color-blue);
     font-weight: bold;
     margin-right: 5px;
+}
+
+#selectRangeAge {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--color-blue);
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 7px;
+    font-size: .8rem;
+    text-transform: capitalize;
+}
+
+#selectRangeAge:focus {
+    outline: none;
+    border: 1.5px solid;
+    border-color: red;
+}
+
+#buttonfilter {
+    border: 1px solid;
+    border-radius: 15px;
+    color: var(--color-red);
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
 }

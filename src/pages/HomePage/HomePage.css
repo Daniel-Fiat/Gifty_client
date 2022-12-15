@@ -24,6 +24,7 @@
     text-align: center;
     color: var(--color-red);
     margin-top: 22px;
+    font-weight: bold;
 }
 
 #navbar-top-center {
