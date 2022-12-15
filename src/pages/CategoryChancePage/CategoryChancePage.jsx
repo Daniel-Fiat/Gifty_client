@@ -24,7 +24,7 @@ const CategoryChance = () => {
 
     const [selectedOption, setSelectedOption] = useState()
     const [minPrice, setMinPrice] = useState(0)
-    const [maxPrice, setMaxPrice] = useState(5000000000)
+    const [maxPrice, setMaxPrice] = useState(2500)
 
     const [showOrder, setShowOrder] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
@@ -172,6 +172,8 @@ const CategoryChance = () => {
                                         <MultiRangeSlider
                                             name="range-price"
                                             min={0}
+                                            defmin={minPrice}
+                                            defmax={maxPrice}
                                             max={2500}
                                             onChange={updatePrice}
                                         />
