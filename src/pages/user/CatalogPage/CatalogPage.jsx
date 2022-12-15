@@ -25,10 +25,7 @@ const Search = () => {
                 {
                     products.map(product => {
                         return (
-                            <>
-                                <CardCatalogList key={product._id} id="card" product={product}>
-                                </CardCatalogList>
-                            </>
+                            <CardCatalogList key={product._id} id="card" product={product}></CardCatalogList>
                         )
                     })
                 }

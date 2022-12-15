@@ -4,6 +4,15 @@
 
 }
 
+.menu-page-container h1 {
+    color: var(--color-red);
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-red);
+    padding-bottom: 10px;
+    margin-top: 12px;
+}
+
 .menu-link {
     border-bottom: 1px solid var(--color-blue);
     padding: 10px;

@@ -10,14 +10,13 @@ const Menu = () => {
     return (
         <>
             <div class="menu-page-container">
+                <h1>User: {user?.email}</h1>
                 <Link to='/user/wishList'><div className="menu-link">My wishList<img src={arrow} alt="arrow.png"></img></div></Link>
                 <Link to='/user/catalog'><div className="menu-link">Catalog<img src={arrow} alt="arrow.png"></img></div></Link>
-                <Link to='/user/mygifts'><div className="menu-link">Mygifts<img src={arrow} alt="arrow.png"></img></div></Link>
                 <Link to='/user/shop'><div className="menu-link">My Shop<img src={arrow} alt="arrow.png"></img></div ></Link>
                 {
                     user ?
                         <>
-                            <Link to='/profile' ><div className="menu-link">Profile<img src={arrow} alt="arrow.png"></img></div></Link>
                             <Link to='/' onClick={logOut}><div className="menu-link">Logout<img src={arrow} alt="arrow.png"></img></div></Link>
                         </>
                         :
