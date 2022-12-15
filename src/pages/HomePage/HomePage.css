@@ -76,3 +76,13 @@
 .carousel-indicators {
     display: none;
 }
+
+@media (min-width: 600px) {
+    #Carousel {
+        height: 450px;
+    }
+
+    #Carousel h3 {
+        margin-bottom: 400px;
+    }
+}
