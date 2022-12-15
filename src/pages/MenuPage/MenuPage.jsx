@@ -20,7 +20,7 @@ const Menu = () => {
                             <Link to='/' onClick={logOut}><div className="menu-link">Logout<img src={arrow} alt="arrow.png"></img></div></Link>
                         </>
                         :
-                        <Link to='/login'><div className="menu-link">Login<img src={arrow} alt="arrow.png"></img></div></Link>
+                        <Link to='/RegisterLogin'><div className="menu-link">Login<img src={arrow} alt="arrow.png"></img></div></Link>
                 }
             </div >
         </>
