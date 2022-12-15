@@ -60,7 +60,7 @@ const Search = () => {
     return (
         <Row>
             <div>
-                <h1>Search</h1>
+                <h1 id='mygifts-title'>Search</h1>
                 <input className='SearchInput'
                     onChange={filterProducts}
                     type='text'
