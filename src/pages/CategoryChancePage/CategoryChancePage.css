@@ -1,5 +1,7 @@
 .title-page {
     color: var(--color-red);
+    font-weight: bold;
+    margin-top: 12px;
 }
 
 #category-chance-links {

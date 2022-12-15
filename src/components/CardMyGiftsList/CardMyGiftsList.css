@@ -6,3 +6,13 @@
 #card-mygift {
     margin-bottom: 10px;
 }
+
+#card-mygift .h5 {
+    font-size: 18px;
+}
+
+@media (min-width: 600px) {
+    #img-card-mygift {
+        height: 400px;
+    }
+}

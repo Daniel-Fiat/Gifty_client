@@ -23,7 +23,7 @@ const CardMyShop = ({ order }) => {
                         <Card.Title>{order.productID.name}</Card.Title>
                         <Card.Title>Price: {order.price}€</Card.Title>
                         <Card.Title>Buyer: {order.clientUser.email}</Card.Title>
-                        <Card.Title>Deliver Date: {order.deliverDate}</Card.Title>
+                        <Card.Title>Delivery Date: {order.deliverDate}</Card.Title>
                         <Card.Title>State: {order.State}</Card.Title>
                         <Card.Text>Message: {order.dedication}</Card.Text>
                         {order.State === "pendingConfirmation" &&

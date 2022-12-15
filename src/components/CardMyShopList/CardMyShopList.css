@@ -1,10 +1,14 @@
-#card-myshop {
+.cardmyshop {
     margin-bottom: 10px;
 }
 
 .cardmyshop form {
     margin-bottom: .5rem;
     text-align: center;
+}
+
+.cardmyshop .h5 {
+    font-size: 18px;
 }
 
 .cardmyshop button {

@@ -32,10 +32,10 @@ const CardCatalogList = ({ order }) => {
                     <Card.Img id="img-card-mygift" variant="top" src={order.productID.imgUrl} />
                     <Card.Body>
                         <Card.Title>{order.productID.name}</Card.Title>
-                        <Card.Title>{order.price}</Card.Title>
-                        <Card.Title>{order.sellerUser.email}</Card.Title>
-                        <Card.Title>{order.deliverDate}</Card.Title>
-                        <Card.Title>{order.State}</Card.Title>
+                        <Card.Title>Price: {order.price}€</Card.Title>
+                        <Card.Title>Buyer: {order.sellerUser.email}</Card.Title>
+                        <Card.Title>Delivery Date: {order.deliverDate}</Card.Title>
+                        <Card.Title>State: {order.State}</Card.Title>
                         <Card.Text>
                             {order.dedication}
                         </Card.Text>
