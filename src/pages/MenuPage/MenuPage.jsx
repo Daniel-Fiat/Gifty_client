@@ -17,7 +17,6 @@ const Menu = () => {
                 {
                     user ?
                         <>
-                            <Link to='/profile' ><div className="menu-link">Profile<img src={arrow} alt="arrow.png"></img></div></Link>
                             <Link to='/' onClick={logOut}><div className="menu-link">Logout<img src={arrow} alt="arrow.png"></img></div></Link>
                         </>
                         :
