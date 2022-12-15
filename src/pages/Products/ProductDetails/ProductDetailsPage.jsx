@@ -7,6 +7,8 @@ import './ProductDetails.css'
 import UserApi from '../../../services/user.service'
 import wishTrue from '../../../assets/Corazon-rojo.png';
 import wishFalse from '../../../assets/Corazon-Blanco.png';
+import startRantingReview from '../../../assets/StarRatingReview.png';
+import startRanting from '../../../assets/StarRating.png';
 
 //http://localhost:3000/product/638f21e7fc32fef2b3800a95
 
@@ -37,6 +39,7 @@ const ProductDetail = () => {
     useEffect(() => {
         ReviewAPI.getByProduct(id).then(reviews => {
             setReviews(reviews)
+
         })
 
     }, [])
@@ -58,44 +61,49 @@ const ProductDetail = () => {
     return (
         <>
             {
-                product ?
-                    (<div id="ProductCard">
-                        <figure id='figure-imgProduct'>
-                            <img id="IMGproduct" src={product.imgUrl} alt="esto" />
-                            <figcaption>
-                                {validateWishList ?
-                                    (<form onSubmit={removeWishList}>
-                                        <button type="submit"><img src={wishTrue} alt={wishTrue}></img></button>
-                                    </form>)
-                                    :
-                                    (<form onSubmit={addWishList}>
-                                        <button type="submit"><img src={wishFalse} alt={wishFalse}></img></button>
-                                    </form>)
 
-                                }
-                            </figcaption>
-                        </figure>
-                        <h1>{product.name}</h1>
-                        <p>{product.description}</p>
-                        <span>{`$ ${product.price}`}</span>
-                        <span>{product.rangeAge}</span>
-                        <span>{product.sellerUser?.email}</span>
-                        <h1>{"⭐".repeat(product.rating)}</h1>
-                    </div>)
-                    :
-                    (<p>Loading...</p>)
+                (<div id="ProductCard">
+                    <h1 id="titleCard">{product.name}</h1>
+                    <figure id='figure-imgProduct'>
+                        <img id="IMGproduct" src={product.imgUrl} alt="esto" />
+                        <figcaption>
+                            {validateWishList ?
+                                (<form onSubmit={removeWishList}>
+                                    <button type="submit"><img src={wishTrue} alt={wishTrue}></img></button>
+                                </form>)
+                                :
+                                (<form onSubmit={addWishList}>
+                                    <button type="submit"><img src={wishFalse} alt={wishFalse}></img></button>
+                                </form>)
+
+                            }
+                        </figcaption>
+                    </figure>
+                    <p id='DetailsProduct' >{product.description}</p>
+                    <h1><img id="StartRating" src={startRanting} alt="" />{product.rating}</h1>
+                    <span id='PriceSpan'>{`${product.price} €`}</span>
+                </div>)
+
             }
-            <Link to={`/gifty/${product._id}`}>
-                Regalar
-            </Link>
-
+            <div id='Gift-boton'>
+                <Link to={`/gifty/${product._id}`}>
+                    Regalar
+                </Link>
+            </div>
+            {reviews && <h5>reviews</h5>}
             {reviews?.map(review => {
                 return (
                     <div>
-                        <h1> {"⭐".repeat(review.rating)}</h1>
-                        <h1> {review.userId.email}</h1>
-                        <span> {review.createdAt}</span>
-                        <p> {review.comment}</p>
+                        <div class="card">
+                            <div class="card-header">
+                                {"⭐".repeat(review.rating)}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{review.userId.email}</h5>
+                                <p class="card-text">{review.comment}</p>
+                                <small> {review.createdAt}</small>
+                            </div>
+                        </div>
                     </div>
                 )
             })}

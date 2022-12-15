@@ -1,6 +1,8 @@
 #IMGproduct {
     width: 100%;
     border-radius: 15px;
+    height: 250px;
+    object-fit: cover;
 }
 
 #ProductCard {
@@ -42,4 +44,47 @@
     right: 1rem;
     bottom: 1rem;
     font-size: 14px;
+}
+
+#Gift-boton a {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: white;
+    width: 70%;
+    margin: 4.5rem 0;
+    padding: 5px;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+#Gift-boton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#StartRating {
+    height: 22px;
+    margin-bottom: 8px;
+}
+
+#titleCard {
+    font-weight: 900;
+    color: var(--color-red);
+    margin-top: 12px;
+}
+
+#DetailsProduct {
+    color: #4F59BA;
+    font-size: .9rem;
+}
+
+#PriceSpan {
+    font-size: 40px;
+    color: #4F59BA;
+    font-weight: bolder;
 }
