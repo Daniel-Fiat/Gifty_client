@@ -8,7 +8,9 @@ const CardProductSearchList = ({ product }) => {
             <Link to={`/product/${product._id}`}>
                 <div>
                     <img src={product.imgUrl} alt="" />
-                    <p className="title">{product.name}</p>
+                    <p className="title">{product.name.length > 22 ?
+                        product.name.substring(0, 20) + "..." :
+                        product.name}</p>
                     <p className="price">{product.price}€</p>
                     <p className="rating">{'⭐'.repeat(product.rating)}</p>
                 </div>

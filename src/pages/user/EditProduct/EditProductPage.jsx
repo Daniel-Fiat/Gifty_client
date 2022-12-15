@@ -79,7 +79,7 @@ const Register = () => {
                         placeholder='price'
                         value={Product.price}>
                     </input>
-                    {///
+                    {
                         Product &&
                         <>
                             <label htmlFor="">category</label>
