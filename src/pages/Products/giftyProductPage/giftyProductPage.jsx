@@ -19,6 +19,7 @@ const GiftyProduct = () => {
     const [adress, setAdress] = useState({})
     const { user } = useContext(AuthContext)
     const { id } = useParams()
+    const ORIGIN = 'https://gifty-seven.vercel.app/'
 
     useEffect(() => {
         ProductAPI.getOneProduct(id)
@@ -90,8 +91,8 @@ const GiftyProduct = () => {
                         "quantity": 1
                     }],
                 "mode": "payment",
-                "success_url": `http://localhost:3000/sucessPayment/${res._id}`,
-                "cancel_url": `http://localhost:3000/cancelPayment/${res._id}`
+                "success_url": `${ORIGIN}sucessPayment/${res._id}`,
+                "cancel_url": `${ORIGIN}cancelPayment/${res._id}`
 
             }
             StripeAPI.checkout(checkout).then(res => window.location.href = res.url)

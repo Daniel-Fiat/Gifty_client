@@ -6,20 +6,23 @@ import ReviewAPI from '../../services/review.service'
 import OrderAPI from '../../services/order.service'
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const CardCatalogList = ({ order }) => {
     const [review, setReview] = useState({})
+    const navigate = useNavigate();
     const updateReview = (event) => {
         const { name, value } = event.target
         setReview({ ...review, [name]: value })
     }
     const createReview = (event) => {
-        event.preventDefault()
-        review.product_id = "algo"
+
         review.userId = order.clientUser._id
         review.product_id = order.productID._id
         ReviewAPI.newReview(review)
-        OrderAPI.updateState(order._id, "review")
+        OrderAPI.updateState(order._id, "review").then(
+
+        )
     }
 
     return (
