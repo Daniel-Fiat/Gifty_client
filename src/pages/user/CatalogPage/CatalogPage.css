@@ -7,3 +7,23 @@
     padding: 7px;
     font-size: .8rem;
 }
+
+#new-product-button-container {
+    justify-content: center !important;
+}
+
+#new-product-button {
+    border: 1px solid;
+    border-radius: 15px;
+    border-color: var(--color-red);
+    background-color: var(--color-red);
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    margin: 0.5rem;
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 20px;
+}

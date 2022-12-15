@@ -1,9 +1,8 @@
-.Newproduct-form-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+.updateproduct-form-container {
     align-items: center;
     justify-content: center;
+    height: calc(100vh - 65.425px);
+    width: 100vw;
 }
 
 #Updateproduct-form {

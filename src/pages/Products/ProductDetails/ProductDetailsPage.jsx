@@ -33,12 +33,11 @@ const ProductDetail = () => {
                 }
             })
     }, [validateWishList])
+
     useEffect(() => {
         ReviewAPI.getByProduct(id).then(reviews => {
             setReviews(reviews)
-            console.log(reviews)
         })
-
 
     }, [])
 

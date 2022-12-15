@@ -16,9 +16,8 @@ const Mygifts = () => {
 
     return (
         <>
-            <h1>Mygiftys</h1>
+            <h1 id="mygifts-title">My giftys</h1>
             {
-                orders.length > 0 &&
                 orders.map(order => {
                     return (
                         <>

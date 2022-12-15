@@ -3,6 +3,7 @@ import ProductApi from '../../../services/product.service'
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
+import { Row } from 'react-bootstrap';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -40,7 +41,7 @@ const Register = () => {
     }
 
     return (
-        <div className='Newproduct-form-container'>
+        <Row className='updateproduct-form-container'>
             <div id="Updateproduct-form">
                 <h1>Update Product</h1>
                 <form onSubmit={updateNewProduct} >
@@ -96,7 +97,7 @@ const Register = () => {
                     <button type="submit" id="registerBoton">Delete Product</button>
                 </form>
             </div>
-        </div>
+        </Row>
     );
 
 }

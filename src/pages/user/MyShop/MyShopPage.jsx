@@ -16,8 +16,11 @@ const MyShop = () => {
     }, [])
     return (
         <>
-            {orders.map(order => <CardMyShop id="card" order={order} key={order._id}>
-            </CardMyShop>)}
+            <h1 id="myshop-title">My Shop</h1>
+            {
+                orders.map(order => <CardMyShop id="card" order={order} key={order._id}>
+                </CardMyShop>)
+            }
         </>
     )
 }

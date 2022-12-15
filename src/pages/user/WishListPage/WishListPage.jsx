@@ -20,12 +20,11 @@ const Search = () => {
 
     return (
         <>
-            <h1>Wish List</h1>
-            <br />
+            <h1 id="wish-list-title">Wish List</h1>
             {
                 <Row>
                     {
-                        products.map(product => <CardProductSearchList product={product}></CardProductSearchList>)
+                        products.map(product => <CardProductSearchList key={product._id} product={product}></CardProductSearchList>)
                     }
                 </Row>
 

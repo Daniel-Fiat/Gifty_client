@@ -6,3 +6,8 @@
     margin: .5rem;
     padding: 7px;
 }
+
+#wish-list-title {
+    font-weight: bold;
+    color: var(--color-red);
+}

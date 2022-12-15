@@ -17,8 +17,10 @@ const Search = () => {
     }, [])
 
     return (
-        <>
-            <div className="menu-link"><Link to='/user/CreateProduct'>New Product</Link></div>
+        <div id="catalog-page-container">
+            <Row id="new-product-button-container">
+                <Link id="new-product-button" to='/user/CreateProduct'>New Product</Link>
+            </Row>
             <Row>
                 {
                     products.map(product => {
@@ -31,7 +33,7 @@ const Search = () => {
                     })
                 }
             </Row>
-        </>
+        </div>
     );
 
 }

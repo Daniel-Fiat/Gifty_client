@@ -6,6 +6,8 @@
     width: 100%;
     border-radius: 6px;
     margin-bottom: 5px;
+    object-fit: cover;
+    height: 100px;
 }
 
 .card-search-product a {
