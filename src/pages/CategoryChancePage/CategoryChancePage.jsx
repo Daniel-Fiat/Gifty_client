@@ -104,7 +104,6 @@ const CategoryChance = () => {
         ProductAPI
             .getAllproduct({ [categoryChanceTypeApi]: categoryChanceType, name: { $regex: valueSearch, $options: 'i' }, price: { $gte: minPrice, $lte: maxPrice }, rangeAge: ageState }, 3, offset, sort)
             .then(products => {
-                console.log(products)
                 setFilter([...filter, ...products])
                 setOffset(offset + 1)
             })
