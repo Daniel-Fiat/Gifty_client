@@ -32,6 +32,7 @@ const Home = () => {
             </div>
             <img id="navbar-top-center" src={navbarTopCenter} alt="NavbarTopCenter" />
             <div id="home-featured">
+                <h2 id='title-featured'>discounts</h2>
                 <Carousel id="Carousel">
                     <Carousel.Item interval={2500}>
                         <Link to="/search/category-breakfast">
