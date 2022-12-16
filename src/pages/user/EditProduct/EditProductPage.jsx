@@ -31,7 +31,7 @@ const Register = () => {
         event.preventDefault()
         UpdateProduct.sellerUser = user._id
         ProductApi.updateProduct(UpdateProduct, Product._id)
-            .then(navigate('/user/catalog'))
+            .then(navigate('/menu'))
     }
 
     const handleFileUpload = (e) => {

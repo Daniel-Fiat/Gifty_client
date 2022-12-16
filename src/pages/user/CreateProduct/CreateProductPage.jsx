@@ -15,7 +15,7 @@ const CreateProduct = () => {
         event.preventDefault()
         Product.sellerUser = user._id
         ProductApi.createProduct(Product).then(
-            navigate('/user/catalog')
+            navigate('/menu')
         )
     }
     const handleFileUpload = (e) => {
