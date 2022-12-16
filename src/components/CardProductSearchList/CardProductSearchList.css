@@ -25,4 +25,10 @@
 
 .card-search-product .price {
     font-weight: bold;
+    overflow-wrap: break-word;
+
+}
+
+#homeRating {
+    font-size: .7rem;
 }

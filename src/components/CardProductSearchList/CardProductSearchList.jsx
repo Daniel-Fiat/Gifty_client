@@ -12,7 +12,7 @@ const CardProductSearchList = ({ product }) => {
                         product.name.substring(0, 20) + "..." :
                         product.name}</p>
                     <p className="price">{product.price}€</p>
-                    <p className="rating">{'⭐'.repeat(product.rating)}</p>
+                    <p id="homeRating" className="rating">⭐{product.rating}.0</p>
                 </div>
             </Link>
         </Col >
