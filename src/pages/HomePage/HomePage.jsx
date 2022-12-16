@@ -59,7 +59,7 @@ const Home = () => {
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item interval={2500}>
-                        <Link to="/search/category-cakes">
+                        <Link to="/search/category-tapas">
                             <img
                                 className="d-block w-100"
                                 src={Picadas}
