@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ReviewAPI from '../../services/review.service'
 import OrderAPI from '../../services/order.service'
-import { Button } from 'react-bootstrap';
+import { Accordion, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -26,36 +26,40 @@ const CardCatalogList = ({ order }) => {
     }
 
     return (
-        <Row xs={1} md={2} className="g-4">
-            <Col>
+        <Row className="g-4">
+            <Col xs={12} md={12}>
                 <Card id="card-mygift">
                     <Card.Img id="img-card-mygift" variant="top" src={order.productID.imgUrl} />
                     <Card.Body>
                         <Card.Title>{order.productID.name}</Card.Title>
-                        <Card.Title>Price: {order.price}€</Card.Title>
-                        <Card.Title>Buyer: {order.sellerUser.email}</Card.Title>
                         <Card.Title>Delivery Date: {order.deliverDate}</Card.Title>
                         <Card.Title>State: {order.State}</Card.Title>
-                        <Card.Text>
-                            {order.dedication}
-                        </Card.Text>
-                        {order.State === "delivered" &&
-                            <form onSubmit={createReview}>
-                                <select onChange={updateReview} name="rating" id="rating" >
-                                    <option value={1}>⭐</option>
-                                    <option value={2}>⭐⭐</option>
-                                    <option value={3}>⭐⭐⭐</option>
-                                    <option value={4}>⭐⭐⭐⭐</option>
-                                    <option value={5}>⭐⭐⭐⭐⭐</option>
-                                </select>
-                                <textarea id="textareaComent" onChange={updateReview} name="comment" cols="30" rows="3"></textarea>
-                                <Button type="submit">Review</Button>
-                            </form>
-                        }
                     </Card.Body>
                 </Card>
+
+                {order.State === "delivered" &&
+                    <Accordion>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header className='title-review-accordion'>Review</Accordion.Header>
+                            <Accordion.Body>
+                                <form onSubmit={createReview}>
+                                    <select onChange={updateReview} name="rating" id="rating" >
+                                        <option value={1}>⭐</option>
+                                        <option value={2}>⭐⭐</option>
+                                        <option value={3}>⭐⭐⭐</option>
+                                        <option value={4}>⭐⭐⭐⭐</option>
+                                        <option value={5}>⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                    <textarea id="textareaComent" onChange={updateReview} name="comment" cols="30" rows="3"></textarea>
+                                    <Button type="submit">Review</Button>
+                                </form>
+                            </Accordion.Body>
+                        </Accordion.Item>
+
+                    </Accordion>
+                }
             </Col>
-        </Row>
+        </Row >
     )
 }
 export default CardCatalogList;

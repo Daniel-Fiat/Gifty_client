@@ -87,3 +87,9 @@
     color: #4F59BA;
     font-weight: bolder;
 }
+
+@media (min-width: 600px) {
+    #IMGproduct {
+        height: 500px;
+    }
+}

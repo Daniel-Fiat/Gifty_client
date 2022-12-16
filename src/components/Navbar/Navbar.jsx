@@ -17,28 +17,28 @@ function NavBar() {
                 <Navbar id="Navbar" fixed="bottom"
                     className="d-flex justify-content-evenly">
                     <div className="d-flex flex-column align-items-center">
-                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/'>
+                        <Link style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }} className='link-navbar' to='/'>
                             <img src={homelogo} alt="" />
+                            <span>Home</span>
                         </Link>
-                        <span>Home</span>
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/search'>
+                        <Link style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }} className='link-navbar' to='/search'>
                             <img src={lupa} alt="" />
+                            <span>Search</span>
                         </Link>
-                        <span>Search</span>
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/user/mygifts'>
+                        <Link style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }} className='link-navbar' to='/user/mygifts'>
                             <img src={gift} alt="" />
+                            <span>MyGiftys</span>
                         </Link>
-                        <span>MyGiftys</span>
                     </div>
                     <div className="d-flex flex-column align-items-center">
-                        <Link style={{ color: 'white', textDecoration: 'none', }} className='link-navbar' to='/menu'>
+                        <Link style={{ color: 'white', textDecoration: 'none', textAlign: 'center' }} className='link-navbar' to='/menu'>
                             <img src={profile} alt="" />
+                            <span>Profile</span>
                         </Link>
-                        <span>Profile</span>
                     </div>
                 </ Navbar>
                 <div className='margin-bottom-app'></div>

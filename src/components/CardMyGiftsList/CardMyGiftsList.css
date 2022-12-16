@@ -1,14 +1,44 @@
 #img-card-mygift {
-    height: 200px;
+    height: 100px;
     object-fit: cover;
+    width: 100px;
+    border-radius: 8px;
 }
 
 #card-mygift {
-    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: center;
+    border: 0;
+}
+
+#card-mygift .card-body {
+    font-size: 14px;
 }
 
 #card-mygift .h5 {
-    font-size: 18px;
+    font-size: 14px;
+}
+
+#card-mygift .h5:nth-child(1) {
+    font-weight: bold;
+    color: var(--color-blue);
+    text-transform: capitalize;
+}
+
+#card-mygift .h5:nth-child(2) {
+    font-weight: regular;
+    color: var(--color-blue);
+}
+
+#card-mygift .h5:nth-child(3) {
+    font-weight: regular;
+    color: var(--color-blue);
+    font-size: 12px;
+}
+
+.title-review-accordion button {
+    color: var(--color-blue);
+    padding: 5px;
 }
 
 @media (min-width: 600px) {

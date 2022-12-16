@@ -26,26 +26,25 @@ const CardMyShop = ({ order }) => {
                         <Card.Title>Delivery Date: {order.deliverDate}</Card.Title>
                         <Card.Title>State: {order.State}</Card.Title>
                         <Card.Text>Message: {order.dedication}</Card.Text>
-                        {order.State === "pendingConfirmation" &&
-                            <>
-                                <form onSubmit={acceptedOrder}>
-                                    <Button type="submit">Confirmar Pedido</Button>
-                                </form>
-                                <form onSubmit={rejectOrder}>
-                                    <Button type="submit">Rechazar Pedido</Button>
-                                </form>
-                            </>
-                        }
-                        {order.State === "accepted" &&
-                            <form onSubmit={deliberyOrder}>
-                                <Button type="submit">Pedido Entregado</Button>
-                            </form>
-                        }
-
-
-
                     </Card.Body>
                 </Card>
+                <div id="buttons-myshop">
+                    {order.State === "pendingConfirmation" &&
+                        <>
+                            <form onSubmit={acceptedOrder}>
+                                <Button type="submit">Confirmar Pedido</Button>
+                            </form>
+                            <form onSubmit={rejectOrder}>
+                                <Button type="submit">Rechazar Pedido</Button>
+                            </form>
+                        </>
+                    }
+                    {order.State === "accepted" &&
+                        <form onSubmit={deliberyOrder}>
+                            <Button type="submit">Pedido Entregado</Button>
+                        </form>
+                    }
+                </div>
             </Col>
         </Row>
     )
