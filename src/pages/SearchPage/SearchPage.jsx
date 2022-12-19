@@ -33,12 +33,12 @@ const Search = () => {
         setValueState(value)
         setOffset(0);
         setOffset((state) => {
-            console.log(value);
             value
                 ?
                 ProductAPI
                     .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, state)
                     .then(products => {
+                        console.log(value);
                         setFilter(products)
                         setOffset(1)
                     })
