@@ -1,5 +1,5 @@
 import './SearchPage.css'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Row } from 'react-bootstrap';
 import CardSearchList from '../../components/CardSearchList/CardSearchList';
 import ProductAPI from '../../services/product.service'
@@ -19,14 +19,11 @@ import BabyShower from '../../assets/OcasionImages/BabyShower.png';
 import Graduaciones from '../../assets/OcasionImages/Graduaciones.png';
 import CardProductSearchList from '../../components/CardProductSearchList/CardProductSearchList';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import productService from '../../services/product.service';
-
 
 const Search = () => {
     const [filter, setFilter] = useState();
     const [valueState, setValueState] = useState()
     const [offset, setOffset] = useState(0)
-
 
     const filterProducts = (event) => {
         const { value } = event.target;
@@ -44,8 +41,6 @@ const Search = () => {
                 : setFilter(undefined);
             return state;
         });
-
-
     }
 
     const fetchData = () => {
@@ -69,7 +64,7 @@ const Search = () => {
                 </input>
 
                 {
-                    filter
+                    filter && valueState
                         ?
                         <InfiniteScroll
                             dataLength={filter.length} //This is important field to render the next data

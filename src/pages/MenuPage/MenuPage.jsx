@@ -9,7 +9,7 @@ const Menu = () => {
     const { logOut, user } = useContext(AuthContext);
     return (
         <>
-            <div class="menu-page-container">
+            <div className="menu-page-container">
                 {user && <h1>User: {user.email}</h1>}
                 <Link to='/user/wishList'><div className="menu-link">My wishList<img src={arrow} alt="arrow.png"></img></div></Link>
                 <Link to='/user/catalog'><div className="menu-link">Catalog<img src={arrow} alt="arrow.png"></img></div></Link>
@@ -22,7 +22,7 @@ const Menu = () => {
                         :
                         <Link to='/RegisterLogin'><div className="menu-link">Login<img src={arrow} alt="arrow.png"></img></div></Link>
                 }
-            </div >
+            </div>
         </>
     );
 
