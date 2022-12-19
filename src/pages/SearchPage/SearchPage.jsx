@@ -33,7 +33,7 @@ const Search = () => {
         setValueState(value)
         setOffset(0);
         setOffset((state) => {
-            value !== ""
+            value
                 ?
                 ProductAPI
                     .getAllproduct({ name: { $regex: value, $options: 'i' } }, 12, state)
