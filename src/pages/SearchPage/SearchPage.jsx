@@ -33,6 +33,7 @@ const Search = () => {
         setValueState(value)
         setOffset(0);
         setOffset((state) => {
+            console.log(value);
             value
                 ?
                 ProductAPI
