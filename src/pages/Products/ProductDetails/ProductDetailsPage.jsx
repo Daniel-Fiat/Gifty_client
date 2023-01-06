@@ -1,5 +1,5 @@
 import { AuthContext } from '../../../context/auth.context';
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ProductAPI from '../../../services/product.service'
 import ReviewAPI from '../../../services/review.service'
@@ -7,7 +7,6 @@ import './ProductDetails.css'
 import UserApi from '../../../services/user.service'
 import wishTrue from '../../../assets/Corazon-rojo.png';
 import wishFalse from '../../../assets/Corazon-Blanco.png';
-import startRantingReview from '../../../assets/StarRatingReview.png';
 import startRanting from '../../../assets/StarRating.png';
 
 //http://localhost:3000/product/638f21e7fc32fef2b3800a95

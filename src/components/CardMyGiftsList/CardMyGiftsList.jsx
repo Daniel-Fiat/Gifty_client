@@ -6,11 +6,9 @@ import ReviewAPI from '../../services/review.service'
 import OrderAPI from '../../services/order.service'
 import { Accordion, Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 
 const CardCatalogList = ({ order }) => {
     const [review, setReview] = useState({})
-    const navigate = useNavigate();
     const updateReview = (event) => {
         const { name, value } = event.target
         setReview({ ...review, [name]: value })

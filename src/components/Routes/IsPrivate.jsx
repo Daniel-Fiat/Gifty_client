@@ -5,11 +5,9 @@ import { AuthContext } from "../../context/auth.context";
 const IsPrivate = (props) => {
     const { isLoggedIn, isLoading } = useContext(AuthContext);
 
-
     if (isLoading) {
         return <>Loading...</>
     }
-
 
     if (isLoggedIn) {
         return props.children;

@@ -1,10 +1,8 @@
 import './CardMyShopList.css'
 import { Button, Card, Col, Row } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
 import OrderAPI from '../../services/order.service'
 
 const CardMyShop = ({ order }) => {
-    const [state, setState] = useState(order.State)
     const acceptedOrder = () => {
         OrderAPI.updateState(order._id, "accepted")
     }
