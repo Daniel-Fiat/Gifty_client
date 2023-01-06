@@ -1,10 +1,10 @@
+import './giftyProductPage.css'
 import { AuthContext } from '../../../context/auth.context';
 import { useContext, useEffect, useState } from "react";
 import ProductAPI from '../../../services/product.service'
-import './giftyProductPage.css'
 import UserApi from '../../../services/user.service'
 import OrderApi from '../../../services/order.service'
-import StripeAPI from '../../../services/stripe.services'
+import StripeAPI from '../../../services/stripe.service'
 import wishTrue from '../../../assets/Corazon-rojo.png';
 import wishFalse from '../../../assets/Corazon-Blanco.png';
 import { useParams } from 'react-router-dom';
