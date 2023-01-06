@@ -1,7 +1,7 @@
 import './CreateProduct.css'
 import ProductApi from '../../../services/product.service'
-import { useState, useEffect, useContext } from 'react';
-import { Form, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
 import { Row } from 'react-bootstrap';
 
@@ -9,7 +9,6 @@ const CreateProduct = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [Product, setProduct] = useState({})
-    const [imageUrl, setImageUrl] = useState("");
 
     const createNewProduct = (event) => {
         event.preventDefault()
@@ -44,7 +43,6 @@ const CreateProduct = () => {
                         name='name'
                         placeholder='name'>
                     </input>
-
                     <input className='NewproductInput' type="file" name='imgUrl' onChange={(e) => handleFileUpload(e)} />
                     <textarea className='NewproductInput'
                         onChange={updateNewProduct}

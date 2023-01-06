@@ -1,7 +1,6 @@
 import './WishListPage.css'
 import { useState, useEffect, useContext } from 'react';
 import ProductAPI from '../../../services/product.service'
-//import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/auth.context';
 import { Row } from 'react-bootstrap';
 import CardProductSearchList from '../../../components/CardProductSearchList/CardProductSearchList';

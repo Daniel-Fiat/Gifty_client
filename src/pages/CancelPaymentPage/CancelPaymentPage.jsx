@@ -24,7 +24,6 @@ const CancelPayment = () => {
                 <img className="elipse-blue-up" src={elipseBlueUp} alt="" />
                 <img className="elipse-pink-up" src={elipsePinkUp} alt="" />
                 <h1>¡Cancel Payment!</h1>
-                {/* <img id="check-green" src={checkGreen} alt="Check Green" loop="1" /> */}
                 <img className="elipse-blue-down" src={elipseBlueDown} alt="" />
                 <img className="elipse-yellow-down" src={elipseYellowDown} alt="" />
             </div>

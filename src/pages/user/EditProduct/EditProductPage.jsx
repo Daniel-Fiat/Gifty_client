@@ -11,7 +11,6 @@ const Register = () => {
     const [UpdateProduct, setUpdateProduct] = useState(Product)
     const [chanceState, setChance] = useState(undefined)
     const [categoryState, setCategory] = useState(undefined)
-
     const { id } = useParams()
     const { user } = useContext(AuthContext);
 
