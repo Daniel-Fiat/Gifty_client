@@ -11,7 +11,6 @@ const MyShop = () => {
     useEffect(() => {
         OrderAPI.getBySeller(user._id).then(orders => {
             const data = orders.filter(order => order.State !== "pendingPayment")
-            console.log(data)
             setOrders(data)
         })
     }, [])

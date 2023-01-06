@@ -5,7 +5,6 @@ class StripeAPI extends initAxios {
         super('stripe')
     }
     checkout(body) {
-        console.log(body)
         return this.axios.post('/checkout', body)
             .then(response => response.data)
             .catch({ error: "error" });

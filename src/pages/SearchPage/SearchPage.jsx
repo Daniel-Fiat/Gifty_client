@@ -52,6 +52,7 @@ const Search = () => {
                 products.length && setFilter([...filter, ...products])
             })
     }
+
     return (
         <Row>
             <div>

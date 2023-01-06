@@ -36,8 +36,8 @@ function App() {
           <Route path='/sucessPayment/:id' element={<IsPrivate> <SucessPayment /> </IsPrivate>} />
           <Route path='/cancelPayment/:id' element={<IsPrivate> <CancelPayment /> </IsPrivate>} />
           <Route path='/postSucessPayment' element={<IsPrivate> <PostSucessPayment /> </IsPrivate>} />
-
           <Route path='/' element={<Home />} />
+          
           <Route path='/search' element={<Search />} />
           <Route path='/search/:type' element={<CategoryChance />} />
           <Route path='/product/:id' element={<ProductDetail />} />

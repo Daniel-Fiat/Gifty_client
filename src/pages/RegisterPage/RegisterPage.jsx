@@ -27,14 +27,11 @@ const Register = () => {
     const updateNewUser = (event) => {
         const { name, value } = event.target
         setUser({ ...user, [name]: value });
-        console.log(user)
     }
     const testmatchPass = (event) => {
         const { value } = event.target
         if (value === user?.password) { setMatchPass(true) }
         else { setMatchPass(false) }
-        console.log(value)
-        console.log(user?.password)
     }
 
 

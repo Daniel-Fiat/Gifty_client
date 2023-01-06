@@ -7,5 +7,4 @@ class InitAxios {
         });
     }
 }
-
 export default InitAxios;

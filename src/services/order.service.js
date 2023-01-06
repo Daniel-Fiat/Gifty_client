@@ -4,11 +4,6 @@ class OrderAPI extends InitAxios {
     constructor() {
         super('orders');
     }
-    newOrder(body) {
-        return this.axios.post(`/new`, body)
-            .then((response) => response.data)
-            .catch({ error: "error" });
-    }
     getBySeller(id) {
         return this.axios.get(`/seller/${id}`)
             .then((response) => response.data)
@@ -18,6 +13,11 @@ class OrderAPI extends InitAxios {
         return this.axios.get(`/client/${id}`)
             .then((response) => response.data)
             .catch({ error: "error" })
+    }
+    newOrder(body) {
+        return this.axios.post(`/new`, body)
+            .then((response) => response.data)
+            .catch({ error: "error" });
     }
     updateState(id, state) {
         return this.axios.put(`/update/${id}`, { state: state })

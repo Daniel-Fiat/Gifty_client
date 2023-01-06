@@ -72,7 +72,6 @@ const CategoryChance = () => {
                 setFilter(products)
 
             })
-
         orderClose();
     }
 
@@ -136,7 +135,7 @@ const CategoryChance = () => {
                         </div>
                     </div>
                     <InfiniteScroll
-                        dataLength={filter.length} //This is important field to render the next data
+                        dataLength={filter.length}
                         next={fetchData}
                         hasMore={true}
                         endMessage={

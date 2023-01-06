@@ -8,7 +8,6 @@ import StripeAPI from '../../../services/stripe.services'
 import wishTrue from '../../../assets/Corazon-rojo.png';
 import wishFalse from '../../../assets/Corazon-Blanco.png';
 import { useParams } from 'react-router-dom';
-import startRanting from '../../../assets/StarRating.png';
 import { Accordion } from 'react-bootstrap';
 
 

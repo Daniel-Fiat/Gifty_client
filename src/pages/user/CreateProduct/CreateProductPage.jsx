@@ -24,7 +24,6 @@ const CreateProduct = () => {
         ProductApi
             .uploadImage(uploadData)
             .then(response => {
-                console.log("response is:" + response.fileUrl)
                 setProduct({ ...Product, imgUrl: response.fileUrl })
             })
             .catch(err => console.log("Error while uploading the file: ", err));

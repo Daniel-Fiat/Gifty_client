@@ -1,4 +1,3 @@
-import checkGreen from '../../assets/check-green.gif';
 import elipseBlueUp from '../../assets/ElipseAzulArriba.png';
 import elipsePinkUp from '../../assets/ElipseRosaArriba.png';
 import elipseBlueDown from '../../assets/ElipseAzulAbajo.png';

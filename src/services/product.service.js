@@ -35,7 +35,6 @@ class ProductAPI extends InitAxios {
     }
 
     updateProduct(body, idProduct) {
-        console.log(body, idProduct)
         return this.axios.put(`/edit/${idProduct}`, body)
             .then(response => response.data)
             .catch({ error: "error" });
