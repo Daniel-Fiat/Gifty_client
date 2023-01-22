@@ -8,6 +8,10 @@
 
 }
 
+.container {
+  max-width: 450px !important;
+}
+
 :root {
   --color-red: #DC0027;
   --color-amm: #FEDD02;
