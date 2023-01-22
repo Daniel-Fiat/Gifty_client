@@ -1,5 +1,9 @@
 #Navbar {
     background-color: var(--color-celeste);
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+
 }
 
 #Navbar div {
