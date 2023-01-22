@@ -34,9 +34,3 @@
 .card-search-product .price {
     font-weight: bold;
 }
-
-@media (min-width: 600px) {
-    .card-search-product img {
-        height: 250px;
-    }
-}

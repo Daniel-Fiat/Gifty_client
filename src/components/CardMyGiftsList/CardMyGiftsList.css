@@ -41,11 +41,7 @@
     padding: 5px;
 }
 
-@media (min-width: 600px) {
-    #img-card-mygift {
-        height: 400px;
-    }
-}
+
 
 #textareaComent {
     width: 100%;
